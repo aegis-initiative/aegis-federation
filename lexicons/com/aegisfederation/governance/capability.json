@@ -1,0 +1,35 @@
+{
+  "lexicon": 1,
+  "id": "com.aegisfederation.governance.capability",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "A declared capability set for AEGIS-governed entities",
+      "key": "tid",
+      "record": {
+        "type": "object",
+        "required": ["name", "version", "capabilities", "denyByDefault", "createdAt"],
+        "properties": {
+          "name": { "type": "string", "maxLength": 200 },
+          "version": { "type": "string" },
+          "description": { "type": "string", "maxLength": 2000 },
+          "capabilities": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "description", "riskLevel"],
+              "properties": {
+                "id": { "type": "string" },
+                "description": { "type": "string" },
+                "riskLevel": { "type": "string", "knownValues": ["low", "medium", "high", "critical"] },
+                "constraints": { "type": "object" }
+              }
+            }
+          },
+          "denyByDefault": { "type": "boolean" },
+          "createdAt": { "type": "string", "format": "datetime" }
+        }
+      }
+    }
+  }
+}
