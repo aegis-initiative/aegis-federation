@@ -1,0 +1,771 @@
+---
+/**
+ * AEGIS Governance Federation Network — Landing Page
+ */
+---
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AEGIS Governance Federation Network</title>
+  <meta name="description" content="Decentralized governance intelligence sharing via the AT Protocol. The AEGIS Governance Federation Network enables federated organizations to share governance signals across an open, interoperable network." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <span class="nav-logo">AEGIS</span>
+        <span class="nav-subtitle">Governance Federation</span>
+      </a>
+      <div class="nav-links">
+        <a href="#how-it-works">How It Works</a>
+        <a href="#signals">Signals</a>
+        <a href="#registration">Registration</a>
+        <a href="https://github.com/aegis-initiative/aegis-federation" class="nav-cta">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">Built on AT Protocol</div>
+      <h1>Governance Federation<br />Network</h1>
+      <p class="hero-lead">
+        Decentralized governance intelligence sharing for the AEGIS ecosystem.
+        Publish and subscribe to governance signals — compliance attestations, policy updates,
+        incident notifications, and risk advisories — across an open, federated network.
+      </p>
+      <div class="hero-actions">
+        <a href="#how-it-works" class="btn btn-primary">Learn More</a>
+        <a href="https://github.com/aegis-initiative/aegis-federation" class="btn btn-secondary">View Source</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="what-is-gfn" class="section">
+    <div class="section-inner">
+      <h2>What is the GFN?</h2>
+      <div class="grid-2">
+        <div>
+          <p>
+            The <strong>AEGIS Governance Federation Network</strong> is a decentralized system
+            for sharing governance intelligence signals across the AEGIS ecosystem. Unlike
+            centralized governance reporting, the GFN leverages the AT Protocol's federated
+            architecture so no single entity controls the flow of governance information.
+          </p>
+          <p>
+            Each participant operates their own Personal Data Server (PDS) and publishes
+            governance records using standardized <strong>Lexicon schemas</strong>. Records
+            propagate through the AT Protocol relay network and are curated by feed generators
+            into actionable intelligence streams.
+          </p>
+        </div>
+        <div class="feature-cards">
+          <div class="card">
+            <div class="card-icon">&#9878;</div>
+            <h3>Federated</h3>
+            <p>No central authority. Each participant controls their own data through their PDS.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">&#9881;</div>
+            <h3>Interoperable</h3>
+            <p>Built on AT Protocol with standardized Lexicon schemas for governance records.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">&#128274;</div>
+            <h3>Verifiable</h3>
+            <p>Cryptographic DIDs ensure signal authenticity and participant identity.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how-it-works" class="section section-alt">
+    <div class="section-inner">
+      <h2>How It Works</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Publish</h3>
+          <p>
+            An AEGIS-governed entity publishes a governance record to their PDS using
+            the standardized Lexicon schemas. Records include signals, attestations,
+            capability declarations, incidents, and policy updates.
+          </p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Relay</h3>
+          <p>
+            The AT Protocol relay network propagates the record across the federation.
+            All records are cryptographically signed by the publishing DID, ensuring
+            tamper-proof provenance.
+          </p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Filter</h3>
+          <p>
+            The AEGIS feed generator subscribes to the firehose and curates governance
+            signals by type and severity into focused intelligence feeds.
+          </p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h3>Consume</h3>
+          <p>
+            Federation participants subscribe to curated feeds or query the firehose
+            directly. Governance signals drive automated compliance monitoring and
+            incident response.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="signals" class="section">
+    <div class="section-inner">
+      <h2>Governance Signals</h2>
+      <p class="section-lead">
+        The GFN defines five core record types via AT Protocol Lexicon schemas, covering the
+        full spectrum of governance intelligence.
+      </p>
+      <div class="signal-grid">
+        <div class="signal-card">
+          <div class="signal-header">
+            <span class="signal-badge signal-critical">Signal</span>
+            <code>com.aegisfederation.governance.signal</code>
+          </div>
+          <p>
+            Real-time governance intelligence — circumvention attempts, risk alerts,
+            policy violations, anomalies, and advisories with severity classification.
+          </p>
+        </div>
+        <div class="signal-card">
+          <div class="signal-header">
+            <span class="signal-badge signal-info">Attestation</span>
+            <code>com.aegisfederation.governance.attestation</code>
+          </div>
+          <p>
+            Cryptographically signed compliance attestations verifying that an entity
+            meets a specific governance capability set.
+          </p>
+        </div>
+        <div class="signal-card">
+          <div class="signal-header">
+            <span class="signal-badge signal-medium">Capability</span>
+            <code>com.aegisfederation.governance.capability</code>
+          </div>
+          <p>
+            Declared capability sets defining permissions, constraints, and risk
+            classifications for AI systems under AEGIS governance.
+          </p>
+        </div>
+        <div class="signal-card">
+          <div class="signal-header">
+            <span class="signal-badge signal-high">Incident</span>
+            <code>com.aegisfederation.governance.incident</code>
+          </div>
+          <p>
+            Governance incident notifications with timeline tracking, affected system
+            enumeration, and status progression.
+          </p>
+        </div>
+        <div class="signal-card">
+          <div class="signal-header">
+            <span class="signal-badge signal-low">Policy</span>
+            <code>com.aegisfederation.governance.policy</code>
+          </div>
+          <p>
+            Policy lifecycle events — new policies, amendments, and deprecations with
+            effective dates and affected capability mappings.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="registration" class="section section-alt">
+    <div class="section-inner">
+      <h2>Registration Model</h2>
+      <p class="section-lead">
+        Federation membership follows a trust-based tiered model. All participants
+        are identified by Decentralized Identifiers (DIDs).
+      </p>
+      <div class="tiers">
+        <div class="tier">
+          <div class="tier-header tier-1">
+            <h3>Tier 1 — Core Federation</h3>
+          </div>
+          <div class="tier-body">
+            <p>
+              AEGIS-operated PDS instances with full signal publishing rights.
+              These are the authoritative sources of governance intelligence.
+            </p>
+            <ul>
+              <li>Full read/write access to all record types</li>
+              <li>Signal authorship is cryptographically verified</li>
+              <li>Operated by AEGIS core infrastructure</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tier">
+          <div class="tier-header tier-2">
+            <h3>Tier 2 — Verified Participants</h3>
+          </div>
+          <div class="tier-body">
+            <p>
+              Organizations that have completed AEGIS governance attestation
+              and operate their own PDS.
+            </p>
+            <ul>
+              <li>Publish attestations and capability declarations</li>
+              <li>Receive governance signals and policy updates</li>
+              <li>Participate in incident response coordination</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tier">
+          <div class="tier-header tier-3">
+            <h3>Tier 3 — Observers</h3>
+          </div>
+          <div class="tier-body">
+            <p>
+              Read-only access to governance feeds via the feed generator.
+              No PDS required.
+            </p>
+            <ul>
+              <li>Subscribe to curated governance feeds</li>
+              <li>Monitor governance signals and incidents</li>
+              <li>No publishing rights</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="get-involved" class="section">
+    <div class="section-inner section-center">
+      <h2>Get Involved</h2>
+      <p class="section-lead">
+        The AEGIS Governance Federation Network is in active development. We are building
+        the foundation for decentralized AI governance infrastructure.
+      </p>
+      <div class="cta-grid">
+        <a href="https://github.com/aegis-initiative/aegis-federation" class="cta-card">
+          <h3>Source Code</h3>
+          <p>Browse the repository, review Lexicon schemas, and explore the feed generator implementation.</p>
+        </a>
+        <a href="https://github.com/aegis-initiative/aegis" class="cta-card">
+          <h3>Governance Hub</h3>
+          <p>Read the governance doctrine, architecture decisions, and specifications that define AEGIS.</p>
+        </a>
+        <a href="https://aegissystems.app" class="cta-card">
+          <h3>AEGIS Platform</h3>
+          <p>Learn about the full AEGIS ecosystem and the AI governance platform.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>&copy; 2026 Finnoybu IP LLC. All rights reserved.</p>
+      <p class="footer-sub">AEGIS Governance Federation Network — Built on AT Protocol</p>
+    </div>
+  </footer>
+</body>
+</html>
+
+<style>
+  :root {
+    --color-bg: #0a0a0f;
+    --color-bg-alt: #0f0f18;
+    --color-surface: #161624;
+    --color-border: #1e1e32;
+    --color-text: #e4e4ef;
+    --color-text-muted: #8888a0;
+    --color-primary: #6366f1;
+    --color-primary-hover: #818cf8;
+    --color-accent: #22d3ee;
+    --color-critical: #ef4444;
+    --color-high: #f97316;
+    --color-medium: #eab308;
+    --color-low: #22c55e;
+    --color-info: #6366f1;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --max-width: 1200px;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Navigation */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(10, 10, 15, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .nav-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-brand {
+    text-decoration: none;
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+  }
+
+  .nav-logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    letter-spacing: 0.05em;
+  }
+
+  .nav-subtitle {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    font-weight: 400;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover {
+    color: var(--color-text);
+  }
+
+  .nav-cta {
+    background: var(--color-surface);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--color-border);
+  }
+
+  .nav-cta:hover {
+    border-color: var(--color-primary) !important;
+    color: var(--color-primary) !important;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 10rem 2rem 6rem;
+    text-align: center;
+    background: radial-gradient(ellipse at 50% 0%, rgba(99, 102, 241, 0.08) 0%, transparent 60%);
+  }
+
+  .hero-inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 0.375rem 1rem;
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-primary-hover);
+    margin-bottom: 2rem;
+    letter-spacing: 0.02em;
+  }
+
+  .hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--color-text) 0%, var(--color-text-muted) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-lead {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    max-width: 640px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.8;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: var(--color-primary-hover);
+  }
+
+  .btn-secondary {
+    background: var(--color-surface);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  /* Sections */
+  .section {
+    padding: 5rem 2rem;
+  }
+
+  .section-alt {
+    background: var(--color-bg-alt);
+  }
+
+  .section-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  .section-center {
+    text-align: center;
+  }
+
+  .section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .section-lead {
+    font-size: 1.05rem;
+    color: var(--color-text-muted);
+    max-width: 700px;
+    margin-bottom: 3rem;
+  }
+
+  .section-center .section-lead {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Grid layouts */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .grid-2 p {
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+  }
+
+  /* Feature cards */
+  .feature-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .card-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    width: 2rem;
+    text-align: center;
+  }
+
+  .card h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+
+  .card p {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+  /* Steps */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .step {
+    position: relative;
+  }
+
+  .step-number {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: rgba(99, 102, 241, 0.15);
+    color: var(--color-primary-hover);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+  }
+
+  .step h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .step p {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  /* Signal cards */
+  .signal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .signal-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 1.5rem;
+  }
+
+  .signal-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .signal-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.625rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .signal-critical { background: rgba(239, 68, 68, 0.15); color: var(--color-critical); }
+  .signal-high { background: rgba(249, 115, 22, 0.15); color: var(--color-high); }
+  .signal-medium { background: rgba(234, 179, 8, 0.15); color: var(--color-medium); }
+  .signal-low { background: rgba(34, 197, 94, 0.15); color: var(--color-low); }
+  .signal-info { background: rgba(99, 102, 241, 0.15); color: var(--color-info); }
+
+  .signal-header code {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+
+  .signal-card p {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  /* Tiers */
+  .tiers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .tier {
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+  }
+
+  .tier-header {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .tier-header h3 {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .tier-1 { background: rgba(99, 102, 241, 0.1); border-bottom-color: rgba(99, 102, 241, 0.2); }
+  .tier-2 { background: rgba(34, 211, 238, 0.08); border-bottom-color: rgba(34, 211, 238, 0.2); }
+  .tier-3 { background: rgba(136, 136, 160, 0.08); border-bottom-color: rgba(136, 136, 160, 0.2); }
+
+  .tier-body {
+    padding: 1.5rem;
+  }
+
+  .tier-body p {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .tier-body ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .tier-body li {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    padding: 0.375rem 0;
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .tier-body li::before {
+    content: '\2022';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+  }
+
+  /* CTA cards */
+  .cta-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    text-align: left;
+  }
+
+  .cta-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 1.75rem;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .cta-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+  }
+
+  .cta-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+  }
+
+  .cta-card p {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 3rem 2rem;
+    border-top: 1px solid var(--color-border);
+    text-align: center;
+  }
+
+  .footer-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  .footer p {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+
+  .footer-sub {
+    margin-top: 0.5rem;
+    font-size: 0.75rem !important;
+    color: rgba(136, 136, 160, 0.5) !important;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .hero h1 { font-size: 2.5rem; }
+    .grid-2, .steps, .tiers, .cta-grid { grid-template-columns: 1fr; }
+    .signal-grid { grid-template-columns: 1fr; }
+    .nav-links a:not(.nav-cta) { display: none; }
+  }
+</style>
