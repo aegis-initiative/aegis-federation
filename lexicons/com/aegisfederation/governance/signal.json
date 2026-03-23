@@ -1,0 +1,25 @@
+{
+  "lexicon": 1,
+  "id": "com.aegisfederation.governance.signal",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "A governance intelligence signal shared across the federation",
+      "key": "tid",
+      "record": {
+        "type": "object",
+        "required": ["type", "severity", "summary", "createdAt"],
+        "properties": {
+          "type": { "type": "string", "knownValues": ["circumvention", "risk_alert", "policy_violation", "anomaly", "advisory"] },
+          "severity": { "type": "string", "knownValues": ["critical", "high", "medium", "low", "informational"] },
+          "summary": { "type": "string", "maxLength": 1000 },
+          "detail": { "type": "string", "maxLength": 10000 },
+          "affectedCapabilities": { "type": "array", "items": { "type": "string" } },
+          "mitigations": { "type": "array", "items": { "type": "string" } },
+          "references": { "type": "array", "items": { "type": "string", "format": "uri" } },
+          "createdAt": { "type": "string", "format": "datetime" }
+        }
+      }
+    }
+  }
+}
