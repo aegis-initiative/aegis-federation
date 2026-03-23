@@ -1,0 +1,25 @@
+{
+  "lexicon": 1,
+  "id": "com.aegisfederation.governance.attestation",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "Governance compliance attestation for an AEGIS-governed entity",
+      "key": "tid",
+      "record": {
+        "type": "object",
+        "required": ["entityDid", "capabilitySetId", "governanceVersion", "attestedBy", "validFrom", "createdAt"],
+        "properties": {
+          "entityDid": { "type": "string", "format": "did" },
+          "capabilitySetId": { "type": "string" },
+          "governanceVersion": { "type": "string" },
+          "attestedBy": { "type": "string", "format": "did" },
+          "validFrom": { "type": "string", "format": "datetime" },
+          "validUntil": { "type": "string", "format": "datetime" },
+          "auditEndpoint": { "type": "string", "format": "uri" },
+          "createdAt": { "type": "string", "format": "datetime" }
+        }
+      }
+    }
+  }
+}
