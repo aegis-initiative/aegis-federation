@@ -1,0 +1,25 @@
+{
+  "lexicon": 1,
+  "id": "com.aegisfederation.governance.policy",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "A governance policy update published to the federation",
+      "key": "tid",
+      "record": {
+        "type": "object",
+        "required": ["policyId", "version", "changeType", "summary", "effectiveDate", "createdAt"],
+        "properties": {
+          "policyId": { "type": "string" },
+          "version": { "type": "string" },
+          "changeType": { "type": "string", "knownValues": ["new", "amendment", "deprecation"] },
+          "summary": { "type": "string", "maxLength": 2000 },
+          "detail": { "type": "string", "maxLength": 10000 },
+          "affectedCapabilities": { "type": "array", "items": { "type": "string" } },
+          "effectiveDate": { "type": "string", "format": "datetime" },
+          "createdAt": { "type": "string", "format": "datetime" }
+        }
+      }
+    }
+  }
+}
