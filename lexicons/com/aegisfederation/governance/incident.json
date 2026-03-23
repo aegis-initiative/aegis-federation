@@ -1,0 +1,35 @@
+{
+  "lexicon": 1,
+  "id": "com.aegisfederation.governance.incident",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "A governance incident notification",
+      "key": "tid",
+      "record": {
+        "type": "object",
+        "required": ["incidentId", "severity", "summary", "status", "createdAt"],
+        "properties": {
+          "incidentId": { "type": "string" },
+          "severity": { "type": "string", "knownValues": ["critical", "high", "medium", "low"] },
+          "summary": { "type": "string", "maxLength": 1000 },
+          "detail": { "type": "string", "maxLength": 10000 },
+          "affectedSystems": { "type": "array", "items": { "type": "string", "format": "did" } },
+          "timeline": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["timestamp", "event"],
+              "properties": {
+                "timestamp": { "type": "string", "format": "datetime" },
+                "event": { "type": "string" }
+              }
+            }
+          },
+          "status": { "type": "string", "knownValues": ["open", "investigating", "mitigated", "resolved"] },
+          "createdAt": { "type": "string", "format": "datetime" }
+        }
+      }
+    }
+  }
+}
