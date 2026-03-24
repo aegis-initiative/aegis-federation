@@ -2,7 +2,7 @@
 
 > Decentralized governance intelligence sharing via the AT Protocol
 
-[![License: Proprietary](https://img.shields.io/badge/License-Proprietary-red.svg)](./LICENSE)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-green.svg)](./LICENSE)
 
 ## Overview
 
