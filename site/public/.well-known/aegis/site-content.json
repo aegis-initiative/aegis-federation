@@ -1,0 +1,33 @@
+{
+  "site": "https://aegis-federation.com",
+  "generated": "2026-03-25",
+  "note": "Site content is not yet built. This file contains the federation concept description for machine readers.",
+  "pages": [
+    {
+      "path": "/",
+      "title": "AEGIS Governance Federation Network",
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "The AEGIS Governance Federation Network (GFN-1) is a decentralized governance intelligence sharing network for AI systems. Built on the AT Protocol, it enables independent AEGIS deployments to publish and consume governance signals — circumvention reports, risk telemetry, policy updates, incident reports, and compliance attestations — across organizational boundaries without centralized control."
+        },
+        {
+          "heading": "How it works",
+          "content": "Participating nodes operate AT Protocol-compatible servers with cryptographic identities (DIDs). Each node can publish governance signals signed with its private key and subscribe to feeds from peer nodes. Incoming signals are evaluated against the publisher's computed trust score before being acted upon locally. Trust is earned through demonstrated accuracy, consistency, audit posture, and peer reputation — not granted by a central authority."
+        },
+        {
+          "heading": "Collective defense",
+          "content": "The federation creates a cooperative defense model analogous to cybersecurity threat intelligence sharing (ISAC consortia). When one node detects a new circumvention technique or emerging risk pattern, that intelligence becomes available to every participating node. The network's defensive capability grows with every node that joins."
+        },
+        {
+          "heading": "Trust architecture",
+          "content": "GFN-1 implements a two-tier trust model. Federation publisher trust is computed from five weighted factors: baseline authority class, historical accuracy, consistency and quality, audit posture, and federation reputation. Agent runtime trust operates separately through two layers: a threat detection layer (binary, immediate, evidence-based) and a reputation layer (longitudinal, advisory, score-based). A normative non-override constraint ensures that no reputation score can ever override a threat detection block."
+        },
+        {
+          "heading": "Protocol foundation",
+          "content": "The federation is built on the AT Protocol (the same protocol that powers Bluesky) with five Lexicon record types under the NSID namespace com.aegisfederation.governance: signal, attestation, capability, incident, and policy. Node identity uses DIDs of the form did:aegis:<network>:<node-id> with Ed25519 cryptographic signing."
+        }
+      ]
+    }
+  ]
+}

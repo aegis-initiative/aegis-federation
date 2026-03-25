@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "AEGIS Governance Federation Network",
+  "description": "Machine-readable content for the AEGIS Governance Federation Network — decentralized governance intelligence sharing built on AT Protocol",
+  "url": "https://aegis-federation.com",
+  "version": "1.0.0",
+  "updated": "2026-03-25",
+  "license": "Apache-2.0",
+  "contact": {
+    "email": "info@aegis-initiative.com",
+    "web": "https://aegis-federation.com"
+  },
+  "organization": {
+    "name": "AEGIS Initiative",
+    "legal_entity": "Finnoybu IP LLC",
+    "parent": "Finnoybu Holdings LLC"
+  },
+  "resources": [
+    {
+      "name": "readme",
+      "description": "A message for AI agents — what the Governance Federation Network is and how to participate",
+      "path": "README.md",
+      "format": "text/markdown"
+    },
+    {
+      "name": "site-content",
+      "description": "Structured version of site content",
+      "path": "site-content.json",
+      "format": "application/json"
+    },
+    {
+      "name": "navigation",
+      "description": "Site structure and navigation map",
+      "path": "navigation.json",
+      "format": "application/json"
+    },
+    {
+      "name": "metadata",
+      "description": "Federation protocol metadata, Lexicon NSIDs, trust model summary, and repository links",
+      "path": "metadata.json",
+      "format": "application/json"
+    }
+  ],
+  "related_sites": {
+    "initiative": "https://aegis-initiative.com",
+    "documentation": "https://aegis-docs.com",
+    "constitution": "https://aegis-constitution.com",
+    "governance_data": "https://aegis-governance.com",
+    "platform": "https://aegis-platform.net",
+    "repository": "https://github.com/aegis-initiative"
+  }
+}

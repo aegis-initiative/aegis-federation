@@ -1,0 +1,102 @@
+{
+  "federation": {
+    "name": "AEGIS Governance Federation Network",
+    "specification": "GFN-1",
+    "version": "1.0",
+    "status": "Normative specification published; infrastructure in development"
+  },
+  "protocol": {
+    "name": "AT Protocol (ATProto)",
+    "description": "Decentralized social networking protocol — provides federation, signed records, and Lexicon schemas",
+    "reference": "https://atproto.com"
+  },
+  "identity": {
+    "type": "Decentralized Identifiers (DIDs)",
+    "format": "did:aegis:<network>:<node-id>",
+    "networks": ["mainnet", "testnet", "consortium-<id>"],
+    "node_id_pattern": "^[a-z0-9][a-z0-9.-]*$",
+    "signing_algorithms": ["ed25519", "rsa-sha256"],
+    "site_did": "did:web:aegis-federation.com"
+  },
+  "lexicon": {
+    "nsid_namespace": "com.aegisfederation.governance",
+    "record_types": [
+      {
+        "nsid": "com.aegisfederation.governance.signal",
+        "description": "Governance intelligence: circumvention reports, risk telemetry, emerging threat patterns"
+      },
+      {
+        "nsid": "com.aegisfederation.governance.attestation",
+        "description": "Governance posture statements: compliance status, audit results, governance configuration"
+      },
+      {
+        "nsid": "com.aegisfederation.governance.capability",
+        "description": "Node capability declarations: supported governance functions and signal types"
+      },
+      {
+        "nsid": "com.aegisfederation.governance.incident",
+        "description": "Structured incident reports: governance breaches, near-misses, and applied mitigations"
+      },
+      {
+        "nsid": "com.aegisfederation.governance.policy",
+        "description": "Policy updates and governance rule changes published for peer node evaluation"
+      }
+    ]
+  },
+  "trust_model": {
+    "description": "Two-tier trust: federation publisher trust (GFN-1) + agent runtime trust (RFC-0004)",
+    "publisher_trust": {
+      "method": "Five-factor weighted average",
+      "factors": [
+        { "name": "Baseline Trust (B)", "description": "Authority class baseline score (0.05 to 0.95)" },
+        { "name": "Historical Accuracy (H)", "description": "Fraction of signals not contradicted over 90-day window" },
+        { "name": "Consistency and Quality (Q)", "description": "Schema compliance, confidence calibration, update timeliness" },
+        { "name": "Audit Posture (A)", "description": "Operational governance maturity evidence" },
+        { "name": "Federation Reputation (F)", "description": "Peer assessment from other federation nodes" }
+      ],
+      "authority_classes": [
+        { "class": "L0_SYSTEM", "initial_score": 0.95 },
+        { "class": "L1_AUTHORITY", "initial_score": 0.85 },
+        { "class": "L2_ENTERPRISE", "initial_score": 0.70 },
+        { "class": "L3_CONTRIBUTOR", "initial_score": 0.50 },
+        { "class": "UNCLASSIFIED", "initial_score": 0.25 },
+        { "class": "QUARANTINE", "initial_score": 0.05 }
+      ]
+    },
+    "agent_runtime_trust": {
+      "layers": [
+        {
+          "name": "Threat Detection Layer",
+          "scope": "Engine layer",
+          "type": "Evidence-based, binary, immediate",
+          "produces": "Allow/block decision (no score)"
+        },
+        {
+          "name": "Reputation Layer",
+          "scope": "Schema layer",
+          "type": "Longitudinal, advisory, score-based",
+          "produces": "Reputation score with decay"
+        }
+      ],
+      "non_override_constraint": "No reputation score can override a threat detection block under any condition"
+    }
+  },
+  "event_types": [
+    "governance.circumvention_report.v1",
+    "governance.risk_signal.v1",
+    "governance.policy_update.v1",
+    "governance.attestation.v1",
+    "governance.incident_notice.v1"
+  ],
+  "repositories": {
+    "federation_site_and_lexicons": "https://github.com/aegis-initiative/aegis-federation",
+    "federation_specifications": "https://github.com/aegis-initiative/aegis-governance",
+    "organization": "https://github.com/aegis-initiative"
+  },
+  "related_specifications": {
+    "GFN-1": "Governance Federation Network — decentralized governance intelligence sharing",
+    "RFC-0004": "Governance Event Model — trust architecture with two-layer separation",
+    "AGP-1": "AEGIS Governance Protocol — wire protocol for action governance",
+    "ATX-1": "AEGIS Threat Matrix — 9 tactics, 20 techniques for agentic AI threat modeling"
+  }
+}

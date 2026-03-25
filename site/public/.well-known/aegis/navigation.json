@@ -1,0 +1,23 @@
+{
+  "site": "https://aegis-federation.com",
+  "note": "Site is currently a scaffold — pages not yet built. Navigation will expand as content is developed.",
+  "pages": [
+    {
+      "path": "/",
+      "title": "Home",
+      "description": "AEGIS Governance Federation Network — decentralized governance intelligence sharing built on AT Protocol"
+    }
+  ],
+  "external_links": [
+    {
+      "label": "GitHub Repository",
+      "url": "https://github.com/aegis-initiative/aegis-federation",
+      "description": "Source code, Lexicon schemas, feed generator, and PDS configuration"
+    },
+    {
+      "label": "Federation Specifications",
+      "url": "https://github.com/aegis-initiative/aegis-governance",
+      "description": "GFN-1 normative specifications in the aegis-governance repository (federation directory)"
+    }
+  ]
+}
