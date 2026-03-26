@@ -1,3 +1,10 @@
+<p align="center">
+  <img src="https://img.shields.io/badge/ip--owner-Finnoybu%20IP%20LLC-blueviolet?style=flat-square" alt="IP Owner">
+  <a href="https://github.com/aegis-initiative"><img src="https://img.shields.io/badge/org-aegis--initiative-0084e7?style=flat-square&logo=github" alt="Org"></a>
+  <a href="https://aegis-federation.com"><img src="https://img.shields.io/badge/domain-aegis--federation.com-0084e7?style=flat-square" alt="Domain"></a>
+  <img src="https://img.shields.io/badge/visibility-public-lightgrey?style=flat-square" alt="Public">
+</p>
+
 # AEGIS Governance Federation Network
 
 > Decentralized governance intelligence sharing via the AT Protocol
