@@ -1,10 +1,12 @@
 # AEGIS Governance Federation Network — Architecture
 
-This document describes the architecture of the AEGIS Governance Federation Network (GFN) and how its three components interconnect.
+This document describes the architecture of the AEGIS Governance Federation Network (GFN) and how its three components
+interconnect.
 
 ## System Overview
 
-The GFN is a decentralized governance intelligence sharing system built on the [AT Protocol](https://atproto.com). It enables AEGIS-governed entities to publish and subscribe to governance signals across a federated network.
+The GFN is a decentralized governance intelligence sharing system built on the [AT Protocol](https://atproto.com). It
+enables AEGIS-governed entities to publish and subscribe to governance signals across a federated network.
 
 ```
                                 AT Protocol Network
@@ -43,13 +45,15 @@ The PDS is the authoritative data store for the AEGIS Federation. It:
 
 **Data Flow**: AEGIS Platform --> PDS --> Relay Network
 
-The AEGIS Platform (aegis-platform) publishes governance records to the PDS via the `com.atproto.repo.createRecord` XRPC endpoint. The PDS then propagates these records through the AT Protocol relay network.
+The AEGIS Platform (aegis-platform) publishes governance records to the PDS via the `com.atproto.repo.createRecord` XRPC
+endpoint. The PDS then propagates these records through the AT Protocol relay network.
 
 ### 2. Feed Generator
 
 **Directory**: `/feed-generator`
 
-The feed generator is a Cloudflare Worker that implements the AT Protocol feed generator interface (`app.bsky.feed.generator`). It:
+The feed generator is a Cloudflare Worker that implements the AT Protocol feed generator interface
+(`app.bsky.feed.generator`). It:
 
 - Subscribes to the AT Protocol firehose (relay stream)
 - Filters for `com.aegisfederation.governance.*` records
@@ -65,7 +69,8 @@ The feed generator is a Cloudflare Worker that implements the AT Protocol feed g
 | `aegis-critical` | Critical signals only | Records with `severity: "critical"` or `severity: "high"` |
 | `aegis-incidents` | Active incidents | `com.aegisfederation.governance.incident` records with `status != "resolved"` |
 
-**DID Resolution**: The feed generator serves its own `did:web` document at `/.well-known/did.json`, declaring itself as an `AtprotoFeedGenerator` service.
+**DID Resolution**: The feed generator serves its own `did:web` document at `/.well-known/did.json`, declaring itself as
+an `AtprotoFeedGenerator` service.
 
 ### 3. Website
 
@@ -81,7 +86,8 @@ An Astro static site deployed to aegis-federation.com. It serves as:
 
 **Directory**: `/lexicons`
 
-AT Protocol Lexicon schemas define the governance record types. These schemas are the contract between all federation participants — any entity publishing or consuming governance data must conform to these schemas.
+AT Protocol Lexicon schemas define the governance record types. These schemas are the contract between all federation
+participants — any entity publishing or consuming governance data must conform to these schemas.
 
 **Namespace**: `com.aegisfederation.governance.*`
 

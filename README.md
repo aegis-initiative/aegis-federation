@@ -1,7 +1,9 @@
 <p align="center">
   <img src="https://img.shields.io/badge/ip--owner-Finnoybu%20IP%20LLC-blueviolet?style=flat-square" alt="IP Owner">
-  <a href="https://github.com/aegis-initiative"><img src="https://img.shields.io/badge/org-aegis--initiative-0084e7?style=flat-square&logo=github" alt="Org"></a>
-  <a href="https://aegis-federation.com"><img src="https://img.shields.io/badge/domain-aegis--federation.com-0084e7?style=flat-square" alt="Domain"></a>
+  <a href="https://github.com/aegis-initiative"><img
+  src="https://img.shields.io/badge/org-aegis--initiative-0084e7?style=flat-square&logo=github" alt="Org"></a>
+  <a href="https://aegis-federation.com"><img
+  src="https://img.shields.io/badge/domain-aegis--federation.com-0084e7?style=flat-square" alt="Domain"></a>
   <img src="https://img.shields.io/badge/visibility-public-lightgrey?style=flat-square" alt="Public">
 </p>
 
@@ -13,9 +15,14 @@
 
 ## Overview
 
-The **AEGIS Governance Federation Network (GFN)** is a decentralized system for sharing governance intelligence signals across the AEGIS ecosystem. Built on the [AT Protocol](https://atproto.com), it enables federated organizations to publish and subscribe to governance signals — compliance attestations, policy updates, incident notifications, and risk advisories — using an open, interoperable protocol.
+The **AEGIS Governance Federation Network (GFN)** is a decentralized system for sharing governance intelligence signals
+across the AEGIS ecosystem. Built on the [AT Protocol](https://atproto.com), it enables federated organizations to
+publish and subscribe to governance signals — compliance attestations, policy updates, incident notifications, and risk
+advisories — using an open, interoperable protocol.
 
-Unlike centralized governance reporting systems, the GFN leverages AT Protocol's federated architecture to ensure no single entity controls the flow of governance information. Each participant operates their own Personal Data Server (PDS) and publishes governance records using standardized Lexicon schemas.
+Unlike centralized governance reporting systems, the GFN leverages AT Protocol's federated architecture to ensure no
+single entity controls the flow of governance information. Each participant operates their own Personal Data Server
+(PDS) and publishes governance records using standardized Lexicon schemas.
 
 ## Architecture
 
@@ -46,11 +53,14 @@ The GFN consists of three components:
 
 ### 1. Personal Data Server (PDS) — `pds/`
 
-The PDS is the data origin. It hosts the DID document for `did:web:aegis-federation.com` and stores all governance records published by the AEGIS Federation. Other PDS instances across the AT Protocol network can subscribe to this data.
+The PDS is the data origin. It hosts the DID document for `did:web:aegis-federation.com` and stores all governance
+records published by the AEGIS Federation. Other PDS instances across the AT Protocol network can subscribe to this
+data.
 
 ### 2. Feed Generator — `feed-generator/`
 
-A Cloudflare Worker that implements the `app.bsky.feed.generator` interface. It subscribes to the AT Protocol firehose, filters for governance-related Lexicon records, and serves curated feeds:
+A Cloudflare Worker that implements the `app.bsky.feed.generator` interface. It subscribes to the AT Protocol firehose,
+filters for governance-related Lexicon records, and serves curated feeds:
 
 | Feed | Description |
 |------|-------------|
@@ -60,11 +70,13 @@ A Cloudflare Worker that implements the `app.bsky.feed.generator` interface. It 
 
 ### 3. Website — `site/`
 
-An Astro-powered landing page at [aegis-federation.com](https://aegis-federation.com) that explains the GFN, displays live governance signal feeds, and provides onboarding documentation for federation participants.
+An Astro-powered landing page at [aegis-federation.com](https://aegis-federation.com) that explains the GFN, displays
+live governance signal feeds, and provides onboarding documentation for federation participants.
 
 ## AT Protocol Integration
 
-The GFN uses AT Protocol's Lexicon schema system to define governance record types. All schemas live in `lexicons/` and follow the AT Protocol Lexicon specification.
+The GFN uses AT Protocol's Lexicon schema system to define governance record types. All schemas live in `lexicons/` and
+follow the AT Protocol Lexicon specification.
 
 ### Lexicon Schemas
 
@@ -88,14 +100,17 @@ The GFN uses AT Protocol's Lexicon schema system to define governance record typ
 Federation membership follows a trust-based model:
 
 - **Tier 1 — Core Federation**: AEGIS-operated PDS instances with full signal publishing rights
-- **Tier 2 — Verified Participants**: Organizations that have completed AEGIS governance attestation and operate their own PDS
+- **Tier 2 — Verified Participants**: Organizations that have completed AEGIS governance attestation and operate their
+own PDS
 - **Tier 3 — Observers**: Read-only access to governance feeds via the feed generator
 
-All participants are identified by DIDs (Decentralized Identifiers), ensuring cryptographic verification of signal authorship.
+All participants are identified by DIDs (Decentralized Identifiers), ensuring cryptographic verification of signal
+authorship.
 
 ## Phase Plan
 
 ### Phase 1 — Foundation (Current)
+
 - [x] Define Lexicon schemas for governance record types
 - [x] Scaffold feed generator (Cloudflare Worker)
 - [x] Create landing page
@@ -103,18 +118,21 @@ All participants are identified by DIDs (Decentralized Identifiers), ensuring cr
 - [ ] Register `did:web:aegis-federation.com`
 
 ### Phase 2 — Signal Infrastructure
+
 - [ ] Implement firehose subscription in feed generator
 - [ ] Build signal ingestion pipeline
 - [ ] Deploy feed generator to Cloudflare
 - [ ] Add live signal display to website
 
 ### Phase 3 — Federation
+
 - [ ] Onboard first external federation participant
 - [ ] Implement attestation verification
 - [ ] Build federation dashboard
 - [ ] Publish governance signal SDK
 
 ### Phase 4 — Scale
+
 - [ ] Multi-relay support
 - [ ] Signal aggregation and analytics
 - [ ] Automated compliance monitoring

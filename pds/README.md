@@ -1,6 +1,7 @@
 # AEGIS Governance Federation — Personal Data Server (PDS)
 
-The Personal Data Server is the AT Protocol data origin for the AEGIS Governance Federation Network. It hosts the DID document, stores governance records, and participates in the AT Protocol relay network.
+The Personal Data Server is the AT Protocol data origin for the AEGIS Governance Federation Network. It hosts the DID
+document, stores governance records, and participates in the AT Protocol relay network.
 
 ## What is a PDS?
 
@@ -19,7 +20,8 @@ The AEGIS Federation uses `did:web` for identity resolution. The DID `did:web:ae
 https://aegis-federation.com/.well-known/did.json
 ```
 
-This DID document declares the PDS service endpoint and the feed generator service, allowing other AT Protocol participants to discover and interact with AEGIS governance data.
+This DID document declares the PDS service endpoint and the feed generator service, allowing other AT Protocol
+participants to discover and interact with AEGIS governance data.
 
 ## Deployment
 
@@ -33,6 +35,7 @@ This DID document declares the PDS service endpoint and the feed generator servi
 ### Quick Start
 
 1. Copy the environment template:
+
    ```bash
    cp config/pds.env.example config/pds.env
    ```
@@ -42,6 +45,7 @@ This DID document declares the PDS service endpoint and the feed generator servi
    - `PDS_JWT_SECRET` — Secret for JWT token signing (generate with `openssl rand -hex 32`)
 
 3. Deploy using the official AT Protocol PDS installer:
+
    ```bash
    # Using the official AT Protocol PDS Docker image
    docker run -d \
