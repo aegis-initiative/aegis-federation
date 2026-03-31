@@ -1,12 +1,16 @@
 # AEGIS Governance Federation — Lexicon Schemas
 
-This directory contains the AT Protocol [Lexicon](https://atproto.com/specs/lexicon) schemas that define the governance record types used across the AEGIS Governance Federation Network.
+This directory contains the AT Protocol [Lexicon](https://atproto.com/specs/lexicon) schemas that define the governance
+record types used across the AEGIS Governance Federation Network.
 
 ## What are Lexicons?
 
-Lexicons are AT Protocol's schema definition language. They define the structure of records, queries, and procedures in the AT Protocol network. Each Lexicon has a reverse-DNS identifier (NSID) and specifies the shape of data that can be stored in a user's repository on their Personal Data Server (PDS).
+Lexicons are AT Protocol's schema definition language. They define the structure of records, queries, and procedures in
+the AT Protocol network. Each Lexicon has a reverse-DNS identifier (NSID) and specifies the shape of data that can be
+stored in a user's repository on their Personal Data Server (PDS).
 
 Lexicons use a JSON-based schema format with version `"lexicon": 1`. Each schema defines:
+
 - **Record types** — Data structures stored in AT Protocol repositories
 - **Queries** — Read-only XRPC endpoints
 - **Procedures** — Write XRPC endpoints
@@ -19,7 +23,8 @@ All AEGIS governance schemas use the `com.aegisfederation.governance.*` namespac
 
 **NSID**: `com.aegisfederation.governance.signal`
 
-A governance intelligence signal shared across the federation. Signals represent real-time governance events such as circumvention attempts, risk alerts, policy violations, anomalies, and advisories.
+A governance intelligence signal shared across the federation. Signals represent real-time governance events such as
+circumvention attempts, risk alerts, policy violations, anomalies, and advisories.
 
 **Required fields**: `type`, `severity`, `summary`, `createdAt`
 
@@ -33,7 +38,8 @@ A governance intelligence signal shared across the federation. Signals represent
 
 **NSID**: `com.aegisfederation.governance.attestation`
 
-A governance compliance attestation for an AEGIS-governed entity. Attestations are cryptographically signed statements that an entity has been verified to comply with a specific governance capability set.
+A governance compliance attestation for an AEGIS-governed entity. Attestations are cryptographically signed statements
+that an entity has been verified to comply with a specific governance capability set.
 
 **Required fields**: `entityDid`, `capabilitySetId`, `governanceVersion`, `attestedBy`, `validFrom`, `createdAt`
 
@@ -43,7 +49,8 @@ A governance compliance attestation for an AEGIS-governed entity. Attestations a
 
 **NSID**: `com.aegisfederation.governance.capability`
 
-A declared capability set for AEGIS-governed entities. Capability sets define the permissions and constraints for AI systems operating under AEGIS governance.
+A declared capability set for AEGIS-governed entities. Capability sets define the permissions and constraints for AI
+systems operating under AEGIS governance.
 
 **Required fields**: `name`, `version`, `capabilities`, `denyByDefault`, `createdAt`
 
@@ -55,7 +62,8 @@ A declared capability set for AEGIS-governed entities. Capability sets define th
 
 **NSID**: `com.aegisfederation.governance.incident`
 
-A governance incident notification with timeline tracking. Incidents represent governance failures or breaches that require coordinated response across the federation.
+A governance incident notification with timeline tracking. Incidents represent governance failures or breaches that
+require coordinated response across the federation.
 
 **Required fields**: `incidentId`, `severity`, `summary`, `status`, `createdAt`
 
@@ -67,7 +75,8 @@ A governance incident notification with timeline tracking. Incidents represent g
 
 **NSID**: `com.aegisfederation.governance.policy`
 
-A governance policy update published to the federation. Policy records announce new governance policies, amendments to existing policies, or policy deprecations.
+A governance policy update published to the federation. Policy records announce new governance policies, amendments to
+existing policies, or policy deprecations.
 
 **Required fields**: `policyId`, `version`, `changeType`, `summary`, `effectiveDate`, `createdAt`
 
@@ -92,6 +101,7 @@ This follows the AT Protocol convention of mapping NSIDs to directory paths.
 ## Usage
 
 These schemas are consumed by:
+
 - **Feed Generator** (`/feed-generator`) — Filters the AT Protocol firehose for matching records
 - **AEGIS Core** — Validates governance records before publishing
 - **AEGIS Platform** — Publishes governance signals using these schemas
