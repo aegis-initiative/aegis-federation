@@ -4,8 +4,9 @@
  */
 ---
 
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
+  <script src="/shared/aegis-nav.js" defer></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AEGIS Governance Federation Network</title>
@@ -276,7 +277,7 @@
 
   <footer class="footer">
     <div class="footer-inner">
-      <p>&copy; 2026 Finnoybu IP LLC. All rights reserved.</p>
+      <p>&copy; 2026 <a href="https://aegis-initiative.com">AEGIS Initiative</a> &middot; Finnoybu IP LLC &middot; <a href="https://aegis-initiative.com/about/">About</a> &middot; <a href="https://aegis-initiative.com/contact/">Contact</a> &middot; <a href="https://aegis-initiative.com/legal/">Legal</a></p>
       <p class="footer-sub">AEGIS Governance Federation Network — Built on AT Protocol</p>
     </div>
   </footer>
@@ -325,7 +326,7 @@
   /* Navigation */
   .nav {
     position: fixed;
-    top: 0;
+    top: var(--aegis-nav-height, 0px);
     left: 0;
     right: 0;
     z-index: 100;
@@ -395,7 +396,7 @@
 
   /* Hero */
   .hero {
-    padding: 10rem 2rem 6rem;
+    padding: calc(10rem + var(--aegis-nav-height, 0px)) 2rem 6rem;
     text-align: center;
     background: radial-gradient(ellipse at 50% 0%, rgba(99, 102, 241, 0.08) 0%, transparent 60%);
   }
@@ -753,6 +754,16 @@
   .footer p {
     font-size: 0.85rem;
     color: var(--color-text-muted);
+  }
+
+  .footer a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer a:hover {
+    color: var(--color-primary);
   }
 
   .footer-sub {
