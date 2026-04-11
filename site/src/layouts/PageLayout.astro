@@ -1,0 +1,114 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '@aegis-initiative/design-system/components/Footer.astro';
+import AegisWordmark from '@aegis-initiative/design-system/components/AegisWordmark.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "Decentralized governance intelligence sharing via the AT Protocol.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="auto">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <!-- AEGIS Ecosystem Navigation Bar -->
+    <script is:inline src="https://aegis-initiative.com/shared/aegis-nav.js" defer></script>
+    <script is:inline>
+      document.documentElement.style.setProperty('--aegis-nav-height', '32px');
+    </script>
+
+    <!-- FOUC prevention -->
+    <script is:inline>
+      (function () {
+        const stored = localStorage.getItem('aegis-theme');
+        const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = stored || preferred;
+      })();
+    </script>
+
+    <slot name="head" />
+  </head>
+  <body>
+    <Header />
+    <div class="page-wrapper">
+      <main class="main-content">
+        <slot />
+        <Footer />
+        <div class="watermark">
+          <AegisWordmark height={720} />
+        </div>
+      </main>
+      <TableOfContents />
+    </div>
+  </body>
+</html>
+
+<style is:global>
+  @import '@aegis-initiative/design-system/css/fonts.css';
+  @import '@aegis-initiative/design-system/css/tokens.css';
+  @import '@aegis-initiative/design-system/css/reset.css';
+
+  h1, h2, h3, h4, h5, h6 {
+    scroll-margin-top: calc(5rem + var(--aegis-nav-height, 0px));
+  }
+
+  [id] {
+    scroll-margin-top: calc(6.55rem + var(--aegis-nav-height, 0px));
+  }
+
+  html { scroll-behavior: smooth; }
+
+  .toc-list a,
+  .toc-dropdown-list a {
+    text-decoration: none;
+  }
+
+  .page-wrapper {
+    display: flex;
+    flex: 1;
+    width: 100%;
+  }
+
+  .main-content {
+    flex: 1;
+    min-width: 0;
+    padding: 2rem 1.5rem;
+    max-width: 72rem;
+  }
+
+  .watermark {
+    display: flex;
+    justify-content: center;
+    padding: 3rem 0 1rem;
+    opacity: 0.08;
+    filter: grayscale(100%);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  @media (min-width: 1024px) {
+    .main-content {
+      padding: 2rem;
+    }
+  }
+
+  @media (min-width: 1367px) {
+    .main-content {
+      margin-right: 320px;
+    }
+  }
+</style>

@@ -642,6 +642,7 @@ import TableOfContents from '../components/TableOfContents.astro';
     <Header />
 
     <div class="page-wrapper">
+      <div class="sidebar-spacer"></div>
       <main class="main-content">
 
         <!-- ═══════════════════════════════════════════════════════════
@@ -932,15 +933,29 @@ import TableOfContents from '../components/TableOfContents.astro';
     width: 100%;
   }
 
+  .sidebar-spacer {
+    display: none;
+    width: 320px;
+    flex-shrink: 0;
+  }
+
   .main-content {
     flex: 1;
     min-width: 0;
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    max-width: 72rem;
   }
 
-  @media (min-width: 1540px) {
+  @media (min-width: 1024px) {
+    .main-content {
+      padding: 2rem;
+    }
+    .sidebar-spacer {
+      display: block;
+    }
+  }
+
+  @media (min-width: 1367px) {
     .main-content {
       margin-right: 320px;
     }
