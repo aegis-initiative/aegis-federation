@@ -6,7 +6,6 @@ import Header from '../components/Header.astro';
 import Footer from '@aegis-initiative/design-system/components/Footer.astro';
 import AegisLogo from '@aegis-initiative/design-system/components/AegisLogo.astro';
 import AegisWordmark from '@aegis-initiative/design-system/components/AegisWordmark.astro';
-import TableOfContents from '../components/TableOfContents.astro';
 ---
 
 <!doctype html>
@@ -641,9 +640,7 @@ import TableOfContents from '../components/TableOfContents.astro';
   <body>
     <Header />
 
-    <div class="page-wrapper">
-      <div class="sidebar-spacer"></div>
-      <main class="main-content">
+    <main class="main-content">
 
         <!-- ═══════════════════════════════════════════════════════════
              HERO
@@ -658,7 +655,7 @@ import TableOfContents from '../components/TableOfContents.astro';
             Publish and subscribe to governance signals — compliance attestations, policy updates,
             incident notifications, and risk advisories — across an open, federated network.
           </p>
-          <p class="hero-note">Built on the AT Protocol</p>
+          <p class="hero-note">Built on the <a href="https://atproto.com" target="_blank" rel="noopener noreferrer">AT Protocol</a></p>
           <div class="hero-actions">
             <a href="#how-it-works" class="btn-primary">Learn More</a>
             <a href="https://github.com/aegis-initiative/aegis-federation" class="btn-secondary">View Source</a>
@@ -920,53 +917,18 @@ import TableOfContents from '../components/TableOfContents.astro';
           <AegisWordmark height={720} />
         </div>
 
-      </main>
-      <TableOfContents />
-    </div>
+    </main>
   </body>
 </html>
 
 <style is:global>
-  .page-wrapper {
-    display: flex;
-    flex: 1;
-    width: 100%;
-  }
-
-  .sidebar-spacer {
-    display: none;
-    min-width: 320px;
-    flex: 1;
-  }
-
   .main-content {
-    flex: 1;
-    min-width: 0;
-    padding: 2rem 1.5rem;
-    max-width: 72rem;
-  }
-
-  @media (min-width: 1024px) {
-    .main-content {
-      padding: 2rem;
-    }
-    .sidebar-spacer {
-      display: block;
-    }
-  }
-
-  @media (min-width: 1367px) {
-    .main-content {
-      margin-right: 320px;
-    }
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 2rem;
   }
 
   [id] {
-    scroll-margin-top: calc(6.55rem + var(--aegis-nav-height, 0px));
-  }
-
-  .toc-list a,
-  .toc-dropdown-list a {
-    text-decoration: none;
+    scroll-margin-top: calc(5rem + var(--aegis-nav-height, 0px));
   }
 </style>
