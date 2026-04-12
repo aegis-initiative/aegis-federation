@@ -160,6 +160,9 @@ cd site && npm install && npm run dev
 
 ## License
 
-Proprietary — Finnoybu IP LLC. All rights reserved.
+Operated by **AEGIS Operations LLC**.
+
+AEGIS™ and **"Capability without constraint is not intelligence™"** are trademarks of **Finnoybu IP LLC**, used under
+license by **AEGIS Operations LLC**.
 
 See [LICENSE](./LICENSE) for details.
