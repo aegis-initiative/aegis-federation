@@ -9,3 +9,8 @@ description: Release history for the AEGIS Federation site
 
 ## 2026
 
+
+### [April](/releases/26/4/)
+
+- [v26.4.12](/releases/26/4/#release--v26412) — Automated releases with calendar versioning and security header fixes
+
