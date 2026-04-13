@@ -6,7 +6,7 @@ description: Release history for the AEGIS Federation site
 
 # Releases
 
-*No releases yet. The first release will be cut by the nightly rollup on the day after the first substantive push to main.*
+Release notes start in April 2026 with the introduction of the auto-release pipeline. For the broader project timeline — pre-release milestones, publication history, and key dates — see [Milestones](https://aegis-initiative.com/press/milestones/).
 
 ## 2026
 
