@@ -1,4 +1,5 @@
 ---
+layout: ../../layouts/ReleaseLayout.astro
 title: Releases
 description: Release history for the AEGIS Federation site
 ---

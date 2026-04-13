@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '@aegis-initiative/design-system/components/Footer.astro';
+import Breadcrumb from '@aegis-initiative/design-system/components/Breadcrumb.astro';
 import AegisWordmark from '@aegis-initiative/design-system/components/AegisWordmark.astro';
 import TableOfContents from '@aegis-initiative/design-system/components/TableOfContents.astro';
 
@@ -13,6 +14,39 @@ const {
   title,
   description = "Decentralized governance intelligence sharing via the AT Protocol.",
 } = Astro.props;
+
+// Auto-generate breadcrumbs from URL path for release pages.
+// Federation only has a landing page + release notes — no other sections need
+// breadcrumbs.
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+const segments = pathname.split('/').filter(Boolean);
+
+const MONTH_NAMES = [
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December',
+];
+
+const breadcrumbItems: { label: string; href?: string }[] = [];
+
+if (segments[0] === 'releases' && segments.length >= 1) {
+  if (segments.length === 1) {
+    breadcrumbItems.push({ label: 'Releases' });
+  } else if (segments.length >= 3) {
+    const yy = segments[1];
+    const month = segments[2];
+    const day = segments[3];
+    const year = 2000 + parseInt(yy, 10);
+    const monthIdx = parseInt(month, 10) - 1;
+    const monthName = MONTH_NAMES[monthIdx] ?? month;
+
+    breadcrumbItems.push({ label: 'Releases', href: '/releases/' });
+    if (day !== undefined) {
+      breadcrumbItems.push({ label: title });
+    } else {
+      breadcrumbItems.push({ label: `${monthName} ${year}` });
+    }
+  }
+}
 ---
 
 <!doctype html>
@@ -44,6 +78,7 @@ const {
   </head>
   <body>
     <Header />
+    {breadcrumbItems.length > 0 && <Breadcrumb items={breadcrumbItems} homeLabel="AEGIS Federation" />}
     <div class="page-wrapper">
       <main class="main-content">
         <slot />
@@ -75,6 +110,17 @@ const {
   .toc-list a,
   .toc-dropdown-list a {
     text-decoration: none;
+  }
+
+  /* Federation has no fixed sidebar — override the package's default
+     320px sidebar offset on the breadcrumb so it aligns with the
+     centered main content instead. */
+  @media (min-width: 1024px) {
+    .breadcrumb {
+      padding-left: 1.5rem !important;
+      max-width: 72rem;
+      margin: 0 auto;
+    }
   }
 
   .page-wrapper {
