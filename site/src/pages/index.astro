@@ -33,6 +33,32 @@ import AegisWordmark from '@aegis-initiative/design-system/components/AegisWordm
     <meta name="twitter:image" content="https://aegis-federation.com/OG_image.png" />
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href="https://aegis-federation.com/" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://aegis-federation.com#site",
+          "name": "AEGIS Federation",
+          "url": "https://aegis-federation.com",
+          "publisher": {
+            "@type": "Organization",
+            "name": "AEGIS Initiative",
+            "url": "https://aegis-initiative.com"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "name": "AEGIS Governance Federation Network",
+          "url": "https://aegis-federation.com/",
+          "description": "Decentralized governance intelligence sharing via the AT Protocol. The AEGIS Governance Federation Network enables federated organizations to share governance signals across an open, interoperable network.",
+          "isPartOf": { "@id": "https://aegis-federation.com#site" }
+        }
+      ]
+    })} />
 
     <!-- AEGIS Ecosystem Navigation Bar -->
     <script is:inline src="https://aegis-initiative.com/shared/aegis-nav.js" defer></script>
