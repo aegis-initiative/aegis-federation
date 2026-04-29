@@ -15,6 +15,10 @@ const {
   description = "Decentralized governance intelligence sharing via the AT Protocol.",
 } = Astro.props;
 
+const pageUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const fullTitle = `${title} | AEGIS Federation`;
+const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
+
 // Auto-generate breadcrumbs from URL path for release pages.
 // Federation only has a landing page + release notes — no other sections need
 // breadcrumbs.
@@ -54,10 +58,60 @@ if (segments[0] === 'releases' && segments.length >= 1) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title}</title>
+    <title>{fullTitle}</title>
     <meta name="description" content={description} />
 
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:site_name" content="AEGIS Federation" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href={pageUrl} />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://aegis-federation.com#site",
+          "name": "AEGIS Federation",
+          "url": "https://aegis-federation.com",
+          "publisher": {
+            "@type": "Organization",
+            "name": "AEGIS Initiative",
+            "url": "https://aegis-initiative.com"
+          }
+        },
+        isHome ? {
+          "@type": "WebPage",
+          "name": fullTitle,
+          "url": pageUrl,
+          "description": description,
+          "isPartOf": { "@id": "https://aegis-federation.com#site" }
+        } : {
+          "@type": "Article",
+          "headline": title,
+          "name": fullTitle,
+          "url": pageUrl,
+          "description": description,
+          "isPartOf": { "@id": "https://aegis-federation.com#site" },
+          "publisher": {
+            "@type": "Organization",
+            "name": "AEGIS Initiative",
+            "url": "https://aegis-initiative.com"
+          }
+        }
+      ]
+    })} />
 
     <!-- AEGIS Ecosystem Navigation Bar -->
     <script is:inline src="https://aegis-initiative.com/shared/aegis-nav.js" defer></script>

@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
+import sitemap from '@astrojs/sitemap';
 import { readSiteVersion } from '@aegis-initiative/design-system/build';
 
 // Version is read from the committed VERSION file in this site
@@ -10,5 +11,5 @@ process.env.AEGIS_VERSION = readSiteVersion();
 
 export default defineConfig({
   site: 'https://aegis-federation.com',
-  integrations: [mdx()],
+  integrations: [mdx(), sitemap()],
 });
