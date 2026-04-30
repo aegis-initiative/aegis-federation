@@ -1,0 +1,57 @@
+---
+import { getCollection, render } from 'astro:content';
+import DocLayout from '../layouts/DocLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+
+export async function getStaticPaths() {
+  const docs = await getCollection('docs');
+  return docs.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const parts = entry.id.split('/');
+
+const MONTH_NAMES = [
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December',
+];
+
+let breadcrumbItems: { label: string; href?: string }[];
+
+if (parts[0] === 'releases' && parts.length >= 3) {
+  // Release-notes pages: AEGIS Federation > Releases > <Month YYYY> [> <Title>]
+  const [, yy, month, day] = parts;
+  const year = 2000 + parseInt(yy, 10);
+  const monthIdx = parseInt(month, 10) - 1;
+  const monthName = MONTH_NAMES[monthIdx] ?? month;
+
+  breadcrumbItems = [
+    { label: 'Releases', href: '/releases/' },
+  ];
+
+  if (day !== undefined) {
+    breadcrumbItems.push({ label: entry.data.title });
+  } else {
+    breadcrumbItems.push({ label: `${monthName} ${year}` });
+  }
+} else {
+  // Default path-based breadcrumb
+  breadcrumbItems = [
+    ...parts.slice(0, -1).map((part: string, i: number) => ({
+      label: part.charAt(0).toUpperCase() + part.slice(1).replace(/-/g, ' '),
+      href: '/' + parts.slice(0, i + 1).join('/') + '/',
+    })),
+    { label: entry.data.title },
+  ];
+}
+---
+
+<DocLayout title={entry.data.title} description={entry.data.description}>
+  <Breadcrumb items={breadcrumbItems} slot="breadcrumb" />
+  <Content />
+</DocLayout>

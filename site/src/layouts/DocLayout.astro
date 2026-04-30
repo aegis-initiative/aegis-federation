@@ -1,0 +1,186 @@
+---
+import Header from "../components/Header.astro";
+import Sidebar from "../components/Sidebar.astro";
+import Footer from "../components/Footer.astro";
+import TableOfContents from "@aegis-initiative/design-system/components/TableOfContents.astro";
+import AegisWordmark from "@aegis-initiative/design-system/components/AegisWordmark.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "AEGIS Governance Federation Network — specification for decentralized governance intelligence sharing on the AT Protocol.",
+} = Astro.props;
+
+const pageUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const fullTitle = `${title} | AEGIS Federation`;
+const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
+---
+
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="auto">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:site_name" content="AEGIS Federation" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href={pageUrl} />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://aegis-federation.com#site",
+          "name": "AEGIS Federation",
+          "url": "https://aegis-federation.com",
+          "publisher": {
+            "@type": "Organization",
+            "name": "AEGIS Initiative",
+            "url": "https://aegis-initiative.com"
+          }
+        },
+        isHome ? {
+          "@type": "WebPage",
+          "name": fullTitle,
+          "url": pageUrl,
+          "description": description,
+          "isPartOf": { "@id": "https://aegis-federation.com#site" }
+        } : {
+          "@type": "TechArticle",
+          "headline": title,
+          "name": fullTitle,
+          "url": pageUrl,
+          "description": description,
+          "isPartOf": { "@id": "https://aegis-federation.com#site" },
+          "publisher": {
+            "@type": "Organization",
+            "name": "AEGIS Initiative",
+            "url": "https://aegis-initiative.com"
+          }
+        }
+      ]
+    })} />
+
+    <!-- AEGIS Ecosystem Navigation Bar -->
+    <script src="https://aegis-initiative.com/shared/aegis-nav.js" defer></script>
+
+    <script is:inline>
+      // Prevent FOUC — apply theme before paint
+      (function () {
+        const stored = localStorage.getItem("aegis-theme");
+        const preferred = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.dataset.theme = stored || preferred;
+        document.documentElement.style.setProperty('--aegis-nav-height', '32px');
+      })();
+    </script>
+  </head>
+  <body>
+    <Header />
+    <slot name="breadcrumb" />
+    <div class="page-wrapper">
+      <Sidebar />
+      <main class="main-content">
+        <slot />
+        <Footer />
+        <div class="watermark">
+          <AegisWordmark height={720} />
+        </div>
+      </main>
+      <TableOfContents />
+    </div>
+    <script is:inline>
+      // Footnote back-reference: scroll to one line above the inline ref
+      document.addEventListener('click', function(e) {
+        var link = e.target.closest('a[data-footnote-backref]');
+        if (!link) return;
+        e.preventDefault();
+        var targetId = link.getAttribute('href')?.replace('#', '');
+        if (!targetId) return;
+        var target = document.getElementById(targetId);
+        if (!target) return;
+        var headerHeight = document.querySelector('.site-header')?.getBoundingClientRect().height || 64;
+        var navHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--aegis-nav-height') || '0', 10);
+        var lineHeight = parseFloat(getComputedStyle(document.body).lineHeight) || 24;
+        var top = target.getBoundingClientRect().top + window.scrollY - headerHeight - navHeight - lineHeight;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      });
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  @import '@aegis-initiative/design-system/css/fonts.css';
+  @import '@aegis-initiative/design-system/css/tokens.css';
+  @import '@aegis-initiative/design-system/css/reset.css';
+
+  h1, h2, h3, h4, h5, h6 {
+    scroll-margin-top: calc(5rem + var(--aegis-nav-height, 0px));
+  }
+
+  [id] {
+    scroll-margin-top: calc(6.55rem + var(--aegis-nav-height, 0px));
+  }
+
+  html { scroll-behavior: smooth; }
+
+  .toc-list a,
+  .toc-dropdown-list a {
+    text-decoration: none;
+  }
+
+  .page-wrapper {
+    display: flex;
+    flex: 1;
+    width: 100%;
+  }
+
+  .main-content {
+    flex: 1;
+    min-width: 0;
+    padding: 2rem 1.5rem;
+    max-width: 72rem;
+  }
+
+  .watermark {
+    display: flex;
+    justify-content: center;
+    padding: 3rem 0 1rem;
+    opacity: 0.08;
+    filter: grayscale(100%);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  @media (min-width: 1024px) {
+    .main-content {
+      padding: 2rem;
+      margin-left: 320px;
+    }
+  }
+
+  @media (min-width: 1367px) {
+    .main-content {
+      max-width: none;
+      margin-right: 320px;
+    }
+  }
+</style>

@@ -1,0 +1,64 @@
+---
+/**
+ * Site-specific Sidebar wrapper.
+ * Declares the AEGIS Federation spec nav structure and delegates rendering
+ * to the shared design-system Sidebar component.
+ */
+import SharedSidebar from '@aegis-initiative/design-system/components/Sidebar.astro';
+
+interface NavItem {
+  label: string;
+  slug: string;
+  items?: NavItem[];
+}
+
+const nav: NavItem[] = [
+  {
+    label: 'Overview',
+    slug: 'overview',
+    items: [
+      { label: 'Introduction', slug: '' },
+      { label: 'Charter', slug: 'overview/charter' },
+      { label: 'Design Principles', slug: 'overview/design-principles' },
+      { label: 'Glossary', slug: 'overview/glossary' },
+    ],
+  },
+  {
+    label: 'Specification',
+    slug: 'spec',
+    items: [
+      { label: 'GFN-1 Network', slug: 'spec/network' },
+      { label: 'Node Architecture', slug: 'spec/node-architecture' },
+      { label: 'Event Schemas', slug: 'spec/schema' },
+      { label: 'Trust Model', slug: 'spec/trust-model' },
+      { label: 'Feed Taxonomy', slug: 'spec/feeds' },
+      { label: 'Conformance', slug: 'spec/conformance' },
+    ],
+  },
+  {
+    label: 'RFCs',
+    slug: 'rfc',
+    items: [
+      { label: 'Index', slug: 'rfc' },
+      { label: 'RFC-0004 — Event Model', slug: 'rfc/0004' },
+      { label: 'RFC-0008 — Federation Transport', slug: 'rfc/0008' },
+    ],
+  },
+  {
+    label: 'Roadmap',
+    slug: 'roadmap',
+    items: [
+      { label: 'Future Extensions', slug: 'roadmap' },
+    ],
+  },
+  {
+    label: 'Releases',
+    slug: 'releases',
+    items: [
+      { label: 'Overview', slug: 'releases' },
+    ],
+  },
+];
+---
+
+<SharedSidebar nav={nav} />

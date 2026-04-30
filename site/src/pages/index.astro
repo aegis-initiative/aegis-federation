@@ -1,11 +1,7 @@
 ---
-/**
- * AEGIS Governance Federation Network — Landing Page
- */
 import Header from '../components/Header.astro';
 import Footer from '@aegis-initiative/design-system/components/Footer.astro';
 import AegisLogo from '@aegis-initiative/design-system/components/AegisLogo.astro';
-import AegisWordmark from '@aegis-initiative/design-system/components/AegisWordmark.astro';
 ---
 
 <!doctype html>
@@ -13,27 +9,40 @@ import AegisWordmark from '@aegis-initiative/design-system/components/AegisWordm
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AEGIS Governance Federation Network</title>
-    <meta name="description" content="Decentralized governance intelligence sharing via the AT Protocol. The AEGIS Governance Federation Network enables federated organizations to share governance signals across an open, interoperable network." />
+    <title>AEGIS Federation — GFN-1 Specification</title>
+    <meta name="description" content="The AEGIS Governance Federation Network specification — decentralized governance intelligence sharing for AI systems, built on the AT Protocol." />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="AEGIS Governance Federation Network" />
-    <meta property="og:description" content="Decentralized governance intelligence sharing via the AT Protocol." />
+    <meta property="og:title" content="AEGIS Federation — GFN-1 Specification" />
+    <meta property="og:description" content="The AEGIS Governance Federation Network specification — decentralized governance intelligence sharing for AI systems, built on the AT Protocol." />
     <meta property="og:url" content="https://aegis-federation.com/" />
     <meta property="og:site_name" content="AEGIS Federation" />
-    <meta property="og:image" content="https://aegis-federation.com/OG_image.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
 
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="AEGIS Governance Federation Network" />
-    <meta name="twitter:description" content="Decentralized governance intelligence sharing via the AT Protocol." />
-    <meta name="twitter:image" content="https://aegis-federation.com/OG_image.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="AEGIS Federation — GFN-1 Specification" />
+    <meta name="twitter:description" content="The AEGIS Governance Federation Network specification — decentralized governance intelligence sharing for AI systems, built on the AT Protocol." />
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="canonical" href="https://aegis-federation.com/" />
+
+    <!-- AEGIS Ecosystem Navigation Bar -->
+    <script is:inline src="https://aegis-initiative.com/shared/aegis-nav.js" defer></script>
+    <script is:inline>
+      document.documentElement.style.setProperty('--aegis-nav-height', '32px');
+    </script>
+
+    <link rel="preload" href="/fonts/ibmplexsans-variablefont_wdthwght-webfont.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/poppins-light-webfont.woff2" as="font" type="font/woff2" crossorigin />
+
+    <script is:inline>
+      (function () {
+        const stored = localStorage.getItem('aegis-theme');
+        const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = stored || preferred;
+      })();
+    </script>
 
     <!-- Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -51,35 +60,75 @@ import AegisWordmark from '@aegis-initiative/design-system/components/AegisWordm
           }
         },
         {
-          "@type": "WebPage",
-          "name": "AEGIS Governance Federation Network",
+          "@type": "TechArticle",
+          "headline": "AEGIS Federation — GFN-1 Specification",
+          "name": "AEGIS Federation — GFN-1 Specification",
           "url": "https://aegis-federation.com/",
-          "description": "Decentralized governance intelligence sharing via the AT Protocol. The AEGIS Governance Federation Network enables federated organizations to share governance signals across an open, interoperable network.",
-          "isPartOf": { "@id": "https://aegis-federation.com#site" }
+          "description": "The AEGIS Governance Federation Network specification — decentralized governance intelligence sharing for AI systems, built on the AT Protocol.",
+          "isPartOf": { "@id": "https://aegis-federation.com#site" },
+          "publisher": {
+            "@type": "Organization",
+            "name": "AEGIS Initiative",
+            "url": "https://aegis-initiative.com"
+          }
         }
       ]
     })} />
+  </head>
+  <body>
+    <Header />
 
-    <!-- AEGIS Ecosystem Navigation Bar -->
-    <script is:inline src="https://aegis-initiative.com/shared/aegis-nav.js" defer></script>
-    <script is:inline>
-      document.documentElement.style.setProperty('--aegis-nav-height', '32px');
-    </script>
+    <main class="hero">
+      <div class="hero-logo">
+        <AegisLogo size={72} />
+      </div>
+      <h1 class="hero-title">AEGIS Federation</h1>
+      <p class="hero-tagline">
+        The Governance Federation Network specification — decentralized governance intelligence sharing for AI systems, built on the <a href="https://atproto.com">AT Protocol</a>.
+      </p>
 
-    <link rel="preload" href="/fonts/ibmplexsans-variablefont_wdthwght-webfont.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/fonts/poppins-light-webfont.woff2" as="font" type="font/woff2" crossorigin />
-    <script is:inline>
-      (function () {
-        const stored = localStorage.getItem('aegis-theme');
-        const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        document.documentElement.dataset.theme = stored || preferred;
-      })();
-    </script>
+      <div class="status-badges">
+        <span class="badge badge-stable">GFN-1 v1.0 — Normative</span>
+        <span class="badge">CC BY-SA 4.0</span>
+        <span class="badge"><a href="https://github.com/aegis-initiative/aegis-federation">github.com/aegis-initiative/aegis-federation</a></span>
+      </div>
+
+      <nav class="nav-grid">
+        <a href="/overview/" class="nav-card">
+          <h2>Overview</h2>
+          <p>Charter, design principles, glossary. Start here if you're new.</p>
+        </a>
+        <a href="/spec/" class="nav-card">
+          <h2>Specification</h2>
+          <p>The normative GFN-1 spec — network, schemas, trust model, conformance.</p>
+        </a>
+        <a href="/rfc/" class="nav-card">
+          <h2>RFCs</h2>
+          <p>Versioned proposals that extend or amend the specification.</p>
+        </a>
+        <a href="/roadmap/" class="nav-card">
+          <h2>Roadmap</h2>
+          <p>Planned RFCs — AI-operational signals, A2A, MCP integration.</p>
+        </a>
+      </nav>
+
+      <section class="summary">
+        <h2>What is the GFN?</h2>
+        <p>
+          A decentralized network for sharing AI governance intelligence — circumvention reports, risk telemetry, policy updates, attestations, incident notices — across independent operators, with no central authority and no membership gate.
+        </p>
+        <p>
+          The specification defines a vocabulary and a trust model. The wire transport is <a href="https://atproto.com">AT Protocol</a>. The reference network is operated by AEGIS Initiative; the specification is open and may be implemented by anyone.
+        </p>
+        <p class="summary-cta">
+          <a href="/overview/">Read the introduction →</a>
+        </p>
+      </section>
+    </main>
+
+    <Footer />
 
     <style>
-      /* ── Font Faces ─────────────────────────────────────────────── */
-
-      /* IBM Plex Sans — Variable (normal) */
       @font-face {
         font-family: "IBM Plex Sans";
         src: url("/fonts/ibmplexsans-variablefont_wdthwght-webfont.woff2") format("woff2");
@@ -87,17 +136,6 @@ import AegisWordmark from '@aegis-initiative/design-system/components/AegisWordm
         font-style: normal;
         font-display: swap;
       }
-
-      /* IBM Plex Sans — Variable (italic) */
-      @font-face {
-        font-family: "IBM Plex Sans";
-        src: url("/fonts/ibmplexsans-italic-variablefont_wdthwght-webfont.woff2") format("woff2");
-        font-weight: 100 700;
-        font-style: italic;
-        font-display: swap;
-      }
-
-      /* Poppins — Light (300) */
       @font-face {
         font-family: "Poppins";
         src: url("/fonts/poppins-light-webfont.woff2") format("woff2");
@@ -106,162 +144,38 @@ import AegisWordmark from '@aegis-initiative/design-system/components/AegisWordm
         font-display: swap;
       }
 
-      @font-face {
-        font-family: "Poppins";
-        src: url("/fonts/poppins-lightitalic-webfont.woff2") format("woff2");
-        font-weight: 300;
-        font-style: italic;
-        font-display: swap;
-      }
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-      /* Poppins — Regular (400) */
-      @font-face {
-        font-family: "Poppins";
-        src: url("/fonts/poppins-regular-webfont.woff2") format("woff2");
-        font-weight: 400;
-        font-style: normal;
-        font-display: swap;
-      }
-
-      @font-face {
-        font-family: "Poppins";
-        src: url("/fonts/poppins-italic-webfont.woff2") format("woff2");
-        font-weight: 400;
-        font-style: italic;
-        font-display: swap;
-      }
-
-      /* Poppins — Medium (500) */
-      @font-face {
-        font-family: "Poppins";
-        src: url("/fonts/poppins-medium-webfont.woff2") format("woff2");
-        font-weight: 500;
-        font-style: normal;
-        font-display: swap;
-      }
-
-      @font-face {
-        font-family: "Poppins";
-        src: url("/fonts/poppins-mediumitalic-webfont.woff2") format("woff2");
-        font-weight: 500;
-        font-style: italic;
-        font-display: swap;
-      }
-
-      /* Poppins — Semi-Bold (600) */
-      @font-face {
-        font-family: "Poppins";
-        src: url("/fonts/poppins-semibold-webfont.woff2") format("woff2");
-        font-weight: 600;
-        font-style: normal;
-        font-display: swap;
-      }
-
-      @font-face {
-        font-family: "Poppins";
-        src: url("/fonts/poppins-semibolditalic-webfont.woff2") format("woff2");
-        font-weight: 600;
-        font-style: italic;
-        font-display: swap;
-      }
-
-      /* ── Theme Tokens ───────────────────────────────────────────── */
-
-      :root,
-      [data-theme="light"] {
-        /* Surface */
+      :root {
         --color-bg: #ffffff;
-        --color-bg-subtle: #f5f5f5;
-        --color-bg-muted: #eeeeee;
-
-        /* Border */
-        --color-border: #d4d4d4;
-        --color-border-subtle: #e8e8e8;
-
-        /* Text */
         --color-text: #161616;
         --color-text-secondary: #595959;
-        --color-text-muted: #595959;
-
-        /* Accent */
+        --color-text-muted: #707070;
         --color-accent: #0062a5;
-        --color-accent-low: #e8f4fd;
-
-        /* Brand */
-        --color-brand-gray: #595959;
-
-        /* Header chrome */
+        --color-accent-high: #005ea2;
+        --color-border: #d4d4d4;
+        --color-bg-subtle: #f5f5f5;
+        --color-brand-gray: #777777;
         --header-bg: #fafafa;
         --header-border: #777777;
         --header-text: #707070;
         --header-text-muted: #707070;
-
-        /* Signal severity */
-        --color-critical: #b50909;
-        --color-critical-bg: #fce8e8;
-        --color-high: #b35900;
-        --color-high-bg: #fcf0e6;
-        --color-medium: #7a6400;
-        --color-medium-bg: #faf5d9;
-        --color-low: #0a6e2e;
-        --color-low-bg: #e6f5ec;
-        --color-info: #0062a5;
-        --color-info-bg: #e8f4fd;
       }
 
       [data-theme="dark"] {
-        /* Surface */
         --color-bg: #161616;
-        --color-bg-subtle: #1e1e1e;
-        --color-bg-muted: #2a2a2a;
-
-        /* Border */
-        --color-border: #3a3a3a;
-        --color-border-subtle: #2a2a2a;
-
-        /* Text */
         --color-text: #e8e8e8;
         --color-text-secondary: #b0b0b0;
         --color-text-muted: #888888;
-
-        /* Accent */
         --color-accent: #4da6f0;
-        --color-accent-low: #0d2640;
-
-        /* Brand */
+        --color-accent-high: #66b2f3;
+        --color-border: #3a3a3a;
+        --color-bg-subtle: #1e1e1e;
         --color-brand-gray: #999999;
-
-        /* Header chrome */
         --header-bg: #000000;
         --header-border: #000000;
         --header-text: #e8e8e8;
         --header-text-muted: #999999;
-
-        /* Signal severity */
-        --color-critical: #f87171;
-        --color-critical-bg: #3b1111;
-        --color-high: #fb923c;
-        --color-high-bg: #3b2311;
-        --color-medium: #facc15;
-        --color-medium-bg: #3b3511;
-        --color-low: #4ade80;
-        --color-low-bg: #113b1e;
-        --color-info: #60a5fa;
-        --color-info-bg: #11233b;
-      }
-
-      /* ── CSS Reset ──────────────────────────────────────────────── */
-
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      html {
-        scroll-behavior: smooth;
       }
 
       body {
@@ -271,694 +185,142 @@ import AegisWordmark from '@aegis-initiative/design-system/components/AegisWordm
         color: var(--color-text);
         line-height: 1.7;
         -webkit-font-smoothing: antialiased;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
       }
+
+      a { color: var(--color-accent); }
+      a:hover { color: var(--color-accent-high); }
 
       h1, h2, h3 {
         font-family: "IBM Plex Sans", system-ui, sans-serif;
         font-weight: 400;
+        line-height: 1.3;
       }
-
-      code {
-        font-family: "JetBrains Mono", "Fira Code", monospace;
-      }
-
-      /* ── Hero ───────────────────────────────────────────────────── */
 
       .hero {
+        flex: 1;
+        max-width: 56rem;
+        margin: 0 auto;
+        padding: 4rem 1.5rem 2rem;
         text-align: center;
-        padding: 4rem 1.5rem 3rem;
       }
 
       .hero-logo {
         margin-bottom: 1.5rem;
+        display: flex;
+        justify-content: center;
       }
 
-      .hero h1 {
-        font-size: 3.5rem;
-        line-height: 1.12;
-        margin-bottom: 1.25rem;
+      .hero-title {
+        font-size: clamp(2.5rem, 6vw, 3.5rem);
+        margin-bottom: 1rem;
       }
 
       .hero-tagline {
-        font-size: 1.25rem;
-        line-height: 1.65;
+        font-size: 1.125rem;
         color: var(--color-text-secondary);
-        max-width: 640px;
-        margin: 0 auto 1rem;
+        max-width: 44rem;
+        margin: 0 auto 2rem;
+        line-height: 1.6;
       }
 
-      .hero-note {
-        font-style: italic;
-        font-size: 0.9375rem;
-        color: var(--color-text-muted);
-        margin-bottom: 2rem;
-      }
-
-      .hero-actions {
+      .status-badges {
         display: flex;
-        gap: 1rem;
-        justify-content: center;
         flex-wrap: wrap;
-      }
-
-      /* ── Buttons ─────────────────────────────────────────────────── */
-
-      .btn-primary,
-      .btn-secondary {
-        display: inline-flex;
-        align-items: center;
         gap: 0.5rem;
-        font-family: "IBM Plex Sans", system-ui, sans-serif;
-        font-weight: 500;
-        text-decoration: none;
-        padding: 0.75rem 1.75rem;
-        border-radius: 6px;
-        font-size: 0.9375rem;
-        transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+        justify-content: center;
+        margin-bottom: 2.5rem;
       }
 
-      .btn-primary {
-        background-color: var(--color-accent);
-        color: #ffffff;
-      }
-
-      .btn-primary:hover {
-        opacity: 0.9;
-      }
-
-      .btn-secondary {
-        background-color: var(--color-bg-subtle);
-        color: var(--color-text-secondary);
+      .badge {
+        font-family: "IBM Plex Mono", "Menlo", monospace;
+        font-size: 0.8125rem;
+        padding: 0.25rem 0.625rem;
         border: 1px solid var(--color-border);
+        border-radius: 0.25rem;
+        color: var(--color-text-secondary);
+        background-color: var(--color-bg-subtle);
       }
 
-      .btn-secondary:hover {
+      .badge a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .badge-stable {
         border-color: var(--color-accent);
         color: var(--color-accent);
+        background-color: transparent;
       }
 
-      /* ── Sections ────────────────────────────────────────────────── */
-
-      section h2 {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-        padding-bottom: 0.75rem;
-        border-bottom: 1px solid var(--color-border-subtle);
-        text-align: center;
-      }
-
-      .section-lead {
-        font-size: 1.05rem;
-        color: var(--color-text-secondary);
-        max-width: 700px;
-        margin: 0 auto 2.5rem;
-        line-height: 1.7;
-        text-align: center;
-      }
-
-      /* ── Grid-2 (What is the GFN) ───────────────────────────────── */
-
-      .grid-2 {
+      .nav-grid {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 3rem;
-        align-items: start;
-      }
-
-      .grid-2 p {
-        font-size: 1.05rem;
-        color: var(--color-text-secondary);
-        margin-bottom: 1rem;
-        line-height: 1.7;
-      }
-
-      /* ── Feature cards ──────────────────────────────────────────── */
-
-      .feature-cards {
-        display: flex;
-        flex-direction: column;
+        grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
         gap: 1rem;
-      }
-
-      .card {
-        background-color: var(--color-bg-subtle);
-        border: 1px solid var(--color-border);
-        border-radius: 8px;
-        padding: 1.25rem 1.5rem;
-        display: flex;
-        gap: 1rem;
-        align-items: flex-start;
-      }
-
-      .card-icon {
-        font-size: 1.5rem;
-        flex-shrink: 0;
-        width: 2rem;
-        text-align: center;
-      }
-
-      .card h3 {
-        font-size: 1.125rem;
-        font-weight: 500;
-        margin-bottom: 0.25rem;
-      }
-
-      .card p {
-        font-size: 0.9375rem;
-        color: var(--color-text-secondary);
-        margin: 0;
-      }
-
-      /* ── Steps (How It Works) ───────────────────────────────────── */
-
-      .steps {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 2rem;
-      }
-
-      .step-header {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        margin-bottom: 0.75rem;
-      }
-
-      .step-number {
-        width: 2.5rem;
-        height: 2.5rem;
-        border-radius: 50%;
-        background-color: var(--color-accent-low);
-        border: 1px solid var(--color-accent);
-        color: var(--color-accent);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: "IBM Plex Sans", system-ui, sans-serif;
-        font-weight: 600;
-        font-size: 1rem;
-        flex-shrink: 0;
-      }
-
-      .step h3 {
-        font-size: 1.125rem;
-        font-weight: 500;
-      }
-
-      .step p {
-        font-size: 0.9375rem;
-        color: var(--color-text-secondary);
-        line-height: 1.6;
-      }
-
-      /* ── Signal cards (Governance Signals) ──────────────────────── */
-
-      .signal-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-        gap: 1.25rem;
-      }
-
-      .signal-card {
-        background-color: var(--color-bg-subtle);
-        border: 1px solid var(--color-border);
-        border-radius: 8px;
-        padding: 1.5rem;
-      }
-
-      .signal-header {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.375rem;
-        margin-bottom: 0.75rem;
-      }
-
-      .signal-badge {
-        font-size: 0.875rem;
-        font-weight: 600;
-        padding: 0.25rem 0.625rem;
-        border-radius: 4px;
-        text-transform: uppercase;
-        letter-spacing: 0.04em;
-      }
-
-      .signal-critical { background-color: var(--color-critical-bg); color: var(--color-critical); }
-      .signal-high { background-color: var(--color-high-bg); color: var(--color-high); }
-      .signal-medium { background-color: var(--color-medium-bg); color: var(--color-medium); }
-      .signal-low { background-color: var(--color-low-bg); color: var(--color-low); }
-      .signal-info { background-color: var(--color-info-bg); color: var(--color-info); }
-
-      .signal-header code {
-        font-size: 0.75rem;
-        color: var(--color-text-muted);
-      }
-
-      .signal-card p {
-        font-size: 0.9375rem;
-        color: var(--color-text-secondary);
-        line-height: 1.6;
-      }
-
-      /* ── Tiers (Registration Model) ─────────────────────────────── */
-
-      .tiers {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
-      }
-
-      .tier {
-        border-radius: 8px;
-        overflow: hidden;
-        background-color: var(--color-bg-subtle);
-        border: 1px solid var(--color-border);
-      }
-
-      .tier-header {
-        padding: 1.25rem 1.5rem;
-        border-bottom: 1px solid var(--color-border);
-      }
-
-      .tier-header h3 {
-        font-size: 1.125rem;
-        font-weight: 500;
-      }
-
-      .tier-1, .tier-2, .tier-3 { background-color: var(--color-accent-low); }
-
-      .tier-body {
-        padding: 1.5rem;
-      }
-
-      .tier-body p {
-        font-size: 0.9375rem;
-        color: var(--color-text-secondary);
-        margin-bottom: 1rem;
-      }
-
-      .tier-body ul {
-        list-style: none;
-        padding: 0;
-      }
-
-      .tier-body li {
-        font-size: 0.9375rem;
-        color: var(--color-text-secondary);
-        padding: 0.375rem 0;
-        padding-left: 1.25rem;
-        position: relative;
-      }
-
-      .tier-body li::before {
-        content: '\2022';
-        position: absolute;
-        left: 0;
-        color: var(--color-accent);
-      }
-
-      /* ── CTA cards (Get Involved) ───────────────────────────────── */
-
-      .cta-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
+        margin-bottom: 3rem;
         text-align: left;
       }
 
-      .cta-card {
-        background-color: var(--color-bg-subtle);
+      .nav-card {
+        display: block;
+        padding: 1.25rem 1.5rem;
         border: 1px solid var(--color-border);
-        border-radius: 8px;
-        padding: 1.75rem;
+        border-radius: 0.5rem;
         text-decoration: none;
-        transition: border-color 0.15s, transform 0.15s;
-      }
-
-      .cta-card:hover {
-        border-color: var(--color-accent);
-        transform: translateY(-2px);
-      }
-
-      .cta-card h3 {
-        font-size: 1.125rem;
-        font-weight: 500;
         color: var(--color-text);
-        margin-bottom: 0.5rem;
+        transition: border-color 0.15s, color 0.15s;
       }
 
-      .cta-card p {
-        font-size: 0.9375rem;
+      .nav-card:hover {
+        border-color: var(--color-accent);
+        color: var(--color-accent);
+      }
+
+      .nav-card h2 {
+        font-weight: 500;
+        font-size: 1.1rem;
+        margin-bottom: 0.25rem;
+      }
+
+      .nav-card p {
+        font-size: 0.9rem;
         color: var(--color-text-secondary);
-        line-height: 1.6;
+        line-height: 1.4;
       }
 
-      /* ── Watermark ──────────────────────────────────────────────── */
-
-      .watermark {
-        display: flex;
-        justify-content: center;
-        padding: 3rem 0 2rem;
-        opacity: 0.08;
-        filter: grayscale(1);
-        pointer-events: none;
-      }
-
-      /* ── HR ─────────────────────────────────────────────────────── */
-
-      hr {
-        border: none;
+      .summary {
+        text-align: left;
+        max-width: 44rem;
+        margin: 0 auto 2rem;
+        padding-top: 2rem;
         border-top: 1px solid var(--color-border);
-        margin: 1.5rem 0;
       }
 
-      /* ── Section center helper ──────────────────────────────────── */
-
-      .section-center {
-        text-align: center;
+      .summary h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
       }
 
-      .section-center .section-lead {
-        margin-left: auto;
-        margin-right: auto;
+      .summary p {
+        margin-bottom: 1rem;
+        color: var(--color-text-secondary);
       }
 
-      /* ── Responsive ─────────────────────────────────────────────── */
+      .summary-cta {
+        margin-top: 1.5rem !important;
+        font-weight: 500;
+      }
 
-      @media (max-width: 900px) {
-        .hero h1 {
-          font-size: 2.5rem;
-        }
+      .summary-cta a {
+        text-decoration: none;
+      }
 
-        .hero-tagline {
-          font-size: 1.0625rem;
-        }
-
-        .grid-2,
-        .steps,
-        .tiers,
-        .cta-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .signal-grid {
-          grid-template-columns: 1fr;
-        }
-
-        section h2 {
-          font-size: 2rem;
-        }
+      @media (max-width: 640px) {
+        .nav-grid { grid-template-columns: 1fr; }
+        .hero { padding: 3rem 1rem 1.5rem; }
       }
     </style>
-  </head>
-  <body>
-    <Header />
-
-    <main class="main-content">
-
-        <!-- ═══════════════════════════════════════════════════════════
-             HERO
-             ═══════════════════════════════════════════════════════════ -->
-        <section class="hero">
-          <div class="hero-logo">
-            <AegisLogo size={80} />
-          </div>
-          <h1>Governance Federation Network</h1>
-          <p class="hero-tagline">
-            Decentralized governance intelligence sharing for the AEGIS ecosystem.
-            Publish and subscribe to governance signals — compliance attestations, policy updates,
-            incident notifications, and risk advisories — across an open, federated network.
-          </p>
-          <p class="hero-note">Built on the <a href="https://atproto.com" target="_blank" rel="noopener noreferrer">AT Protocol</a></p>
-          <div class="hero-actions">
-            <a href="#how-it-works" class="btn-primary">Learn More</a>
-            <a href="https://github.com/aegis-initiative/aegis-federation" class="btn-secondary">View Source</a>
-          </div>
-        </section>
-
-        <hr />
-
-        <!-- ═══════════════════════════════════════════════════════════
-             WHAT IS THE GFN
-             ═══════════════════════════════════════════════════════════ -->
-        <section id="what-is-the-gfn">
-          <h2>What is the GFN?</h2>
-          <div class="grid-2">
-            <div>
-              <p>
-                The <strong>AEGIS Governance Federation Network</strong> is a decentralized system
-                for sharing governance intelligence signals across the AEGIS ecosystem. Unlike
-                centralized governance reporting, the GFN leverages the AT Protocol's federated
-                architecture so no single entity controls the flow of governance information.
-              </p>
-              <p>
-                Each participant operates their own Personal Data Server (PDS) and publishes
-                governance records using standardized <strong>Lexicon schemas</strong>. Records
-                propagate through the AT Protocol relay network and are curated by feed generators
-                into actionable intelligence streams.
-              </p>
-            </div>
-            <div class="feature-cards">
-              <div class="card">
-                <div class="card-icon">&#9878;</div>
-                <div>
-                  <h3>Federated</h3>
-                  <p>No central authority. Each participant controls their own data through their PDS.</p>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-icon">&#9881;</div>
-                <div>
-                  <h3>Interoperable</h3>
-                  <p>Built on AT Protocol with standardized Lexicon schemas for governance records.</p>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-icon">&#128274;</div>
-                <div>
-                  <h3>Verifiable</h3>
-                  <p>Cryptographic DIDs ensure signal authenticity and participant identity.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <hr />
-
-        <!-- ═══════════════════════════════════════════════════════════
-             HOW IT WORKS
-             ═══════════════════════════════════════════════════════════ -->
-        <section id="how-it-works">
-          <h2>How It Works</h2>
-          <div class="steps">
-            <div class="step">
-              <div class="step-header"><div class="step-number">1</div><h3>Publish</h3></div>
-              <p>
-                An AEGIS-governed entity publishes a governance record to their PDS using
-                the standardized Lexicon schemas. Records include signals, attestations,
-                capability declarations, incidents, and policy updates.
-              </p>
-            </div>
-            <div class="step">
-              <div class="step-header"><div class="step-number">2</div><h3>Relay</h3></div>
-              <p>
-                The AT Protocol relay network propagates the record across the federation.
-                All records are cryptographically signed by the publishing DID, ensuring
-                tamper-proof provenance.
-              </p>
-            </div>
-            <div class="step">
-              <div class="step-header"><div class="step-number">3</div><h3>Filter</h3></div>
-              <p>
-                The AEGIS feed generator subscribes to the firehose and curates governance
-                signals by type and severity into focused intelligence feeds.
-              </p>
-            </div>
-            <div class="step">
-              <div class="step-header"><div class="step-number">4</div><h3>Consume</h3></div>
-              <p>
-                Federation participants subscribe to curated feeds or query the firehose
-                directly. Governance signals drive automated compliance monitoring and
-                incident response.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <hr />
-
-        <!-- ═══════════════════════════════════════════════════════════
-             GOVERNANCE SIGNALS
-             ═══════════════════════════════════════════════════════════ -->
-        <section id="governance-signals">
-          <h2>Governance Signals</h2>
-          <p class="section-lead">
-            The GFN defines five core record types via AT Protocol Lexicon schemas, covering the
-            full spectrum of governance intelligence.
-          </p>
-          <div class="signal-grid">
-            <div class="signal-card">
-              <div class="signal-header">
-                <span class="signal-badge signal-critical">Signal</span>
-                <code>com.aegisfederation.governance.signal</code>
-              </div>
-              <p>
-                Real-time governance intelligence — circumvention attempts, risk alerts,
-                policy violations, anomalies, and advisories with severity classification.
-              </p>
-            </div>
-            <div class="signal-card">
-              <div class="signal-header">
-                <span class="signal-badge signal-info">Attestation</span>
-                <code>com.aegisfederation.governance.attestation</code>
-              </div>
-              <p>
-                Cryptographically signed compliance attestations verifying that an entity
-                meets a specific governance capability set.
-              </p>
-            </div>
-            <div class="signal-card">
-              <div class="signal-header">
-                <span class="signal-badge signal-medium">Capability</span>
-                <code>com.aegisfederation.governance.capability</code>
-              </div>
-              <p>
-                Declared capability sets defining permissions, constraints, and risk
-                classifications for AI systems under AEGIS governance.
-              </p>
-            </div>
-            <div class="signal-card">
-              <div class="signal-header">
-                <span class="signal-badge signal-high">Incident</span>
-                <code>com.aegisfederation.governance.incident</code>
-              </div>
-              <p>
-                Governance incident notifications with timeline tracking, affected system
-                enumeration, and status progression.
-              </p>
-            </div>
-            <div class="signal-card">
-              <div class="signal-header">
-                <span class="signal-badge signal-low">Policy</span>
-                <code>com.aegisfederation.governance.policy</code>
-              </div>
-              <p>
-                Policy lifecycle events — new policies, amendments, and deprecations with
-                effective dates and affected capability mappings.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <hr />
-
-        <!-- ═══════════════════════════════════════════════════════════
-             REGISTRATION MODEL
-             ═══════════════════════════════════════════════════════════ -->
-        <section id="registration-model">
-          <h2>Registration Model</h2>
-          <p class="section-lead">
-            Federation membership follows a trust-based tiered model. All participants
-            are identified by Decentralized Identifiers (DIDs).
-          </p>
-          <div class="tiers">
-            <div class="tier">
-              <div class="tier-header tier-1">
-                <h3>Tier 1 — Core Federation</h3>
-              </div>
-              <div class="tier-body">
-                <p>
-                  AEGIS-operated PDS instances with full signal publishing rights.
-                  These are the authoritative sources of governance intelligence.
-                </p>
-                <ul>
-                  <li>Full read/write access to all record types</li>
-                  <li>Signal authorship is cryptographically verified</li>
-                  <li>Operated by AEGIS core infrastructure</li>
-                </ul>
-              </div>
-            </div>
-            <div class="tier">
-              <div class="tier-header tier-2">
-                <h3>Tier 2 — Verified Participants</h3>
-              </div>
-              <div class="tier-body">
-                <p>
-                  Organizations that have completed AEGIS governance attestation
-                  and operate their own PDS.
-                </p>
-                <ul>
-                  <li>Publish attestations and capability declarations</li>
-                  <li>Receive governance signals and policy updates</li>
-                  <li>Participate in incident response coordination</li>
-                </ul>
-              </div>
-            </div>
-            <div class="tier">
-              <div class="tier-header tier-3">
-                <h3>Tier 3 — Observers</h3>
-              </div>
-              <div class="tier-body">
-                <p>
-                  Read-only access to governance feeds via the feed generator.
-                  No PDS required.
-                </p>
-                <ul>
-                  <li>Subscribe to curated governance feeds</li>
-                  <li>Monitor governance signals and incidents</li>
-                  <li>No publishing rights</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <hr />
-
-        <!-- ═══════════════════════════════════════════════════════════
-             GET INVOLVED
-             ═══════════════════════════════════════════════════════════ -->
-        <section id="get-involved" class="section-center">
-          <h2>Get Involved</h2>
-          <p class="section-lead">
-            The AEGIS Governance Federation Network is in active development. We are building
-            the foundation for decentralized AI governance infrastructure.
-          </p>
-          <div class="cta-grid">
-            <a href="https://aegis-initiative.com" class="cta-card">
-              <h3>AEGIS Initiative</h3>
-              <p>Learn about the full AEGIS ecosystem and the governance-first AI security mission.</p>
-            </a>
-            <a href="https://aegis-governance.com" class="cta-card">
-              <h3>Governance Hub</h3>
-              <p>Read the governance doctrine, architecture decisions, and specifications that define AEGIS.</p>
-            </a>
-            <a href="https://github.com/aegis-initiative/aegis-federation" class="cta-card">
-              <h3>Source Code</h3>
-              <p>Browse the repository, review Lexicon schemas, and explore the feed generator implementation.</p>
-            </a>
-          </div>
-        </section>
-
-        <Footer />
-
-        <div class="watermark">
-          <AegisWordmark height={720} />
-        </div>
-
-    </main>
   </body>
 </html>
-
-<style is:global>
-  .main-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem 2rem;
-  }
-
-  [id] {
-    scroll-margin-top: calc(5rem + var(--aegis-nav-height, 0px));
-  }
-</style>
