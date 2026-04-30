@@ -54,7 +54,7 @@ to this repository.
   (e.g., `governance.risk_signal.v1`).
 - Lexicon schemas follow AT Protocol Lexicon v1 specification. **Note: existing lexicon definitions predate GFN-1
   v1.0 and use a different namespace structure (`com.aegisfederation.governance.*` with camelCase fields).
-  Realignment to match the GFN-1 schema spec is a tracked migration item — see README.md.**
+  Realignment is tracked in [RFC-0009](https://aegis-federation.com/rfc/0009/) (high priority).**
 - Feed generator implements `app.bsky.feed.generator` XRPC interface
 - DID format: `did:aegis:<network>:<node-identifier>` (e.g., `did:aegis:mainnet:aegis-initiative`)
 - Branch: main is protected; all changes via PR

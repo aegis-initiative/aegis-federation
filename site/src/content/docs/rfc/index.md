@@ -17,6 +17,7 @@ RFC numbering and process are aligned with the broader AEGIS RFC series originat
 |---|---|---|---|
 | [RFC-0004](/rfc/0004/) | AEGIS Governance Event Model | 1.0 | Final |
 | [RFC-0008](/rfc/0008/) | Federation Network Transport | 0.0.1 | Placeholder |
+| [RFC-0009](/rfc/0009/) | Lexicon Alignment with GFN-1 Schema | 0.0.1 | Placeholder (high priority) |
 
 ---
 
