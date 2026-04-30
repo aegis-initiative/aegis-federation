@@ -132,9 +132,10 @@ Code changes (feed generator, lexicons, tooling) follow conventional commits and
 
 - **Lexicon alignment.** The current Lexicon record definitions in `lexicons/com/aegisfederation/governance/` were
   authored before GFN-1 v1.0 and do not yet match the canonical event types in the
-  [Event Schemas](https://aegis-federation.com/spec/schema/) section. Lexicon realignment is tracked as a forthcoming
-  RFC; until then, the specification (snake_case event-type names like `governance.risk_signal.v1`) is authoritative
-  for new implementations and the existing Lexicons should be considered legacy.
+  [Event Schemas](https://aegis-federation.com/spec/schema/) section. Realignment is tracked in
+  [RFC-0009](https://aegis-federation.com/rfc/0009/) (high priority); until that RFC is Final, the specification
+  (snake_case event-type names like `governance.risk_signal.v1`) is authoritative for new implementations and the
+  existing Lexicons should be considered legacy.
 - **PDS deployment.** The reference PDS at `did:aegis:mainnet:aegis-initiative` is not yet deployed. Configuration is
   documented in [`pds/README.md`](./pds/README.md).
 
