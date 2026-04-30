@@ -2,166 +2,157 @@
   <a href="https://github.com/aegis-initiative"><img
   src="https://img.shields.io/badge/org-aegis--initiative-0084e7?style=flat-square&logo=github" alt="Org"></a>
   <a href="https://aegis-federation.com"><img
-  src="https://img.shields.io/badge/domain-aegis--federation.com-0084e7?style=flat-square" alt="Domain"></a>
+  src="https://img.shields.io/badge/spec-aegis--federation.com-0084e7?style=flat-square" alt="Specification"></a>
   <img src="https://img.shields.io/badge/visibility-public-lightgrey?style=flat-square" alt="Public">
 </p>
 
 # AEGIS Governance Federation Network
 
-> Decentralized governance intelligence sharing via the AT Protocol
+> **Specification + reference implementation for decentralized governance intelligence sharing on the AT Protocol.**
 
 [![License: CC-BY-SA-4.0](https://img.shields.io/badge/license-CC--BY--SA--4.0-blue.svg)](./LICENSE)
+[![GFN-1 v1.0](https://img.shields.io/badge/GFN--1-v1.0%20Normative-success?style=flat-square)][gfn-1-spec]
+
+[gfn-1-spec]: https://aegis-federation.com/spec/
+
+---
+
+## What this is
+
+The **AEGIS Governance Federation Network (GFN)** is a decentralized infrastructure for sharing AI governance
+intelligence — circumvention reports, risk signals, policy updates, attestations, and incident notices — across
+independent AI systems and the organizations that operate them. It is a **cooperative defense model for AI
+governance**, analogous to threat-intelligence sharing systems used in cybersecurity (CVEs, ISACs).
+
+This repository contains:
+
+- **The canonical specification** (GFN-1 v1.0) — published as a docs site at
+  [aegis-federation.com](https://aegis-federation.com).
+- **The AT Protocol Lexicon schemas** for governance record types.
+- **A reference feed generator** (Cloudflare Worker) that curates governance feeds from the AT Protocol firehose.
+- **Personal Data Server (PDS) configuration** for the reference network operator.
+
+Everything required to understand, implement, or operate against the GFN lives in this repository.
+
+## Status
+
+**GFN-1 v1.0 is normative and stable.** Read the specification at
+[aegis-federation.com/spec/](https://aegis-federation.com/spec/).
+
+The reference network is operated by AEGIS Initiative. The specification is open and may be implemented by anyone;
+participation does not require AEGIS approval.
 
 ## Overview
 
-The **AEGIS Governance Federation Network (GFN)** is a decentralized system for sharing governance intelligence signals
-across the AEGIS ecosystem. Built on the [AT Protocol](https://atproto.com), it enables federated organizations to
-publish and subscribe to governance signals — compliance attestations, policy updates, incident notifications, and risk
-advisories — using an open, interoperable protocol.
-
-Unlike centralized governance reporting systems, the GFN leverages AT Protocol's federated architecture to ensure no
-single entity controls the flow of governance information. Each participant operates their own Personal Data Server
-(PDS) and publishes governance records using standardized Lexicon schemas.
-
-## Architecture
-
-The GFN consists of three components:
-
 ```
-┌─────────────────────────────────────────────────────────┐
-│                    aegis-federation                      │
-│                                                         │
-│  ┌──────────┐    ┌──────────────────┐    ┌───────────┐  │
-│  │   site/   │    │ feed-generator/  │    │   pds/    │  │
-│  │          │    │                  │    │           │  │
-│  │  Astro   │    │   Cloudflare     │    │ AT Proto  │  │
-│  │ Landing  │◄───│    Worker        │◄───│  Personal │  │
-│  │  Page    │    │                  │    │   Data    │  │
-│  │          │    │  Curates feeds   │    │  Server   │  │
-│  │          │    │  from firehose   │    │           │  │
-│  └──────────┘    └──────────────────┘    └───────────┘  │
-│                                                         │
-│  ┌─────────────────────────────────────────────────────┐ │
-│  │              lexicons/                              │ │
-│  │  AT Protocol Lexicon schemas for governance         │ │
-│  │  signals, attestations, capabilities, incidents,    │ │
-│  │  and policy updates                                 │ │
-│  └─────────────────────────────────────────────────────┘ │
-└─────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────┐
+│                      aegis-federation                        │
+│                                                              │
+│  ┌────────────┐    ┌──────────────────┐    ┌──────────────┐  │
+│  │   site/    │    │ feed-generator/  │    │     pds/     │  │
+│  │            │    │                  │    │              │  │
+│  │  Astro:    │    │   Cloudflare     │    │ AT Protocol  │  │
+│  │  GFN-1     │◄───│      Worker      │◄───│   Personal   │  │
+│  │  Spec      │    │                  │    │     Data     │  │
+│  │  Site      │    │  Curates feeds   │    │    Server    │  │
+│  │            │    │  from firehose   │    │              │  │
+│  └────────────┘    └──────────────────┘    └──────────────┘  │
+│                                                              │
+│  ┌──────────────────────────────────────────────────────────┐│
+│  │                       lexicons/                          ││
+│  │  AT Protocol Lexicon record schemas for governance       ││
+│  │  signals, attestations, capabilities, incidents, and     ││
+│  │  policy updates.                                         ││
+│  └──────────────────────────────────────────────────────────┘│
+└──────────────────────────────────────────────────────────────┘
 ```
 
-### 1. Personal Data Server (PDS) — `pds/`
+## Specification
 
-The PDS is the data origin. It hosts the DID document for `did:web:aegis-federation.com` and stores all governance
-records published by the AEGIS Federation. Other PDS instances across the AT Protocol network can subscribe to this
-data.
+The full specification is published at **[aegis-federation.com](https://aegis-federation.com)** and consists of:
 
-### 2. Feed Generator — `feed-generator/`
+| Section | URL |
+|---|---|
+| Overview / Charter | [/overview/](https://aegis-federation.com/overview/) |
+| GFN-1 Network architecture | [/spec/network/](https://aegis-federation.com/spec/network/) |
+| Node Reference Architecture | [/spec/node-architecture/](https://aegis-federation.com/spec/node-architecture/) |
+| Event Schemas | [/spec/schema/](https://aegis-federation.com/spec/schema/) |
+| Trust Model | [/spec/trust-model/](https://aegis-federation.com/spec/trust-model/) |
+| Feed Taxonomy | [/spec/feeds/](https://aegis-federation.com/spec/feeds/) |
+| Conformance | [/spec/conformance/](https://aegis-federation.com/spec/conformance/) |
+| RFCs | [/rfc/](https://aegis-federation.com/rfc/) |
+| Roadmap | [/roadmap/](https://aegis-federation.com/roadmap/) |
 
-A Cloudflare Worker that implements the `app.bsky.feed.generator` interface. It subscribes to the AT Protocol firehose,
-filters for governance-related Lexicon records, and serves curated feeds:
+The specification source markdown lives in [`site/src/content/docs/`](./site/src/content/docs/).
 
-| Feed | Description |
-|------|-------------|
-| `aegis-all` | All governance intelligence signals |
-| `aegis-critical` | Critical and high-severity signals only |
-| `aegis-incidents` | Active governance incident notifications |
+## Identity
 
-### 3. Website — `site/`
+Federation participants are identified by **Decentralized Identifiers (DIDs)** in the format
+`did:aegis:<network>:<node-identifier>`. AEGIS Initiative operates the reference network; other organizations may
+stand up their own networks (or join consortiums) under the same specification.
 
-An Astro-powered landing page at [aegis-federation.com](https://aegis-federation.com) that explains the GFN, displays
-live governance signal feeds, and provides onboarding documentation for federation participants.
+The reference network is identified as `did:aegis:mainnet`. Test/dev networks use `did:aegis:testnet`.
+Consortium-private networks use `did:aegis:consortium-<id>`.
 
-## AT Protocol Integration
+There is **no membership gate**. Any party may operate a node and publish to the federation, subject to the trust
+evaluation rules defined in the [Trust Model](https://aegis-federation.com/spec/trust-model/). Trust accumulates
+with consistent accuracy and decays with inactivity or contradictions; defection is rapidly self-correcting under
+the formal incentive analysis.
 
-The GFN uses AT Protocol's Lexicon schema system to define governance record types. All schemas live in `lexicons/` and
-follow the AT Protocol Lexicon specification.
+## Repository Layout
 
-### Lexicon Schemas
-
-| Schema | Purpose |
-|--------|---------|
-| `com.aegisfederation.governance.signal` | Governance intelligence signals (risk alerts, advisories, anomalies) |
-| `com.aegisfederation.governance.attestation` | Compliance attestations for governed entities |
-| `com.aegisfederation.governance.capability` | Declared capability sets with risk classifications |
-| `com.aegisfederation.governance.incident` | Governance incident notifications with timelines |
-| `com.aegisfederation.governance.policy` | Policy updates (new policies, amendments, deprecations) |
-
-### How Federation Works
-
-1. **Publish** — An AEGIS-governed entity publishes a governance record to their PDS using the Lexicon schemas
-2. **Relay** — The AT Protocol relay network propagates the record across the federation
-3. **Filter** — The feed generator subscribes to the firehose and curates signals by type and severity
-4. **Consume** — Federation participants subscribe to curated feeds or query the firehose directly
-
-## Registration Model
-
-Federation membership follows a trust-based model:
-
-- **Tier 1 — Core Federation**: AEGIS-operated PDS instances with full signal publishing rights
-- **Tier 2 — Verified Participants**: Organizations that have completed AEGIS governance attestation and operate their
-own PDS
-- **Tier 3 — Observers**: Read-only access to governance feeds via the feed generator
-
-All participants are identified by DIDs (Decentralized Identifiers), ensuring cryptographic verification of signal
-authorship.
-
-## Phase Plan
-
-### Phase 1 — Foundation (Current)
-
-- [x] Define Lexicon schemas for governance record types
-- [x] Scaffold feed generator (Cloudflare Worker)
-- [x] Create landing page
-- [ ] Deploy PDS instance at `aegis-federation.com`
-- [ ] Register `did:web:aegis-federation.com`
-
-### Phase 2 — Signal Infrastructure
-
-- [ ] Implement firehose subscription in feed generator
-- [ ] Build signal ingestion pipeline
-- [ ] Deploy feed generator to Cloudflare
-- [ ] Add live signal display to website
-
-### Phase 3 — Federation
-
-- [ ] Onboard first external federation participant
-- [ ] Implement attestation verification
-- [ ] Build federation dashboard
-- [ ] Publish governance signal SDK
-
-### Phase 4 — Scale
-
-- [ ] Multi-relay support
-- [ ] Signal aggregation and analytics
-- [ ] Automated compliance monitoring
-- [ ] Cross-federation interoperability
+| Directory | Purpose |
+|---|---|
+| `site/` | Astro site at [aegis-federation.com](https://aegis-federation.com) — homepage, GFN-1 specification, RFCs, roadmap |
+| `lexicons/` | AT Protocol Lexicon schemas for governance record types |
+| `feed-generator/` | Cloudflare Worker reference implementation of `app.bsky.feed.generator` for governance feeds |
+| `pds/` | Configuration for the AEGIS Initiative Personal Data Server |
+| `docs/` | Architecture documentation (mirror of relevant sections from the spec site) |
 
 ## Development
 
 ```bash
+# Documentation site
+cd site && npm install && npm run dev
+# Site available at http://localhost:4321
+
 # Feed generator
 cd feed-generator && npm install && npm run dev
-
-# Website
-cd site && npm install && npm run dev
 ```
 
-## Related Repos
+## Contributing
+
+Specification changes flow through the [RFC process](https://aegis-federation.com/rfc/). Open an RFC as a PR against
+[`site/src/content/docs/rfc/`](./site/src/content/docs/rfc/).
+
+Code changes (feed generator, lexicons, tooling) follow conventional commits and the repository's PR template. See
+[`.github/pull_request_template.md`](.github/pull_request_template.md).
+
+### Known migration items
+
+- **Lexicon alignment.** The current Lexicon record definitions in `lexicons/com/aegisfederation/governance/` were
+  authored before GFN-1 v1.0 and do not yet match the canonical event types in the
+  [Event Schemas](https://aegis-federation.com/spec/schema/) section. Lexicon realignment is tracked as a forthcoming
+  RFC; until then, the specification (snake_case event-type names like `governance.risk_signal.v1`) is authoritative
+  for new implementations and the existing Lexicons should be considered legacy.
+- **PDS deployment.** The reference PDS at `did:aegis:mainnet:aegis-initiative` is not yet deployed. Configuration is
+  documented in [`pds/README.md`](./pds/README.md).
+
+## Related Repositories
 
 | Repo | Role |
 |------|------|
-| [aegis](https://github.com/aegis-initiative/aegis) | Governance hub — specs and doctrine |
-| [aegis-core](https://github.com/aegis-initiative/aegis-core) | Enforcement engine |
-| [aegis-platform](https://github.com/aegis-initiative/aegis-platform) | Production platform |
+| [aegis-initiative](https://github.com/aegis-initiative/aegis-initiative) | Public site — analysis, press, policy engagement |
 | [aegis-constitution](https://github.com/aegis-initiative/aegis-constitution) | Public governance charter |
-| [aegis-ops](https://github.com/aegis-initiative/aegis-ops) | Operational backbone |
+| [aegis-governance](https://github.com/aegis-initiative/aegis-governance) | Technical specifications hub for the broader AEGIS architecture |
+| [aegis-docs](https://github.com/aegis-initiative/aegis-docs) | Operator-facing documentation for the AEGIS platform |
 
 ## License
 
+The AEGIS Federation specification is released under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+The reference implementation in this repository is dual-licensed; see [LICENSE](./LICENSE) for details.
+
 Operated by **AEGIS Operations LLC**.
 
-AEGIS™ and **"Capability without constraint is not intelligence™"** are trademarks of **Finnoybu IP LLC**, used under
+AEGIS™ and *"Capability without constraint is not intelligence™"* are trademarks of **Finnoybu IP LLC**, used under
 license by **AEGIS Operations LLC**.
-
-See [LICENSE](./LICENSE) for details.

@@ -9,7 +9,14 @@
     "Saltzer", "Shapira", "Moens", "Mattijs", "Freestone",
     "inspectable", "markdownlint", "crossref", "OpenAIRE",
     "tamper-evident", "exfiltration", "wordmark", "wordmarks",
-    "bsky", "aegisfederation", "aegissystems", "XRPC"
+    "bsky", "aegisfederation", "aegissystems", "XRPC",
+    "AFSC", "AIVRF", "Arzt", "Backpressure", "backpressure",
+    "Bodden", "DNSSEC", "EBNF", "Frontmatter", "frontmatter",
+    "HITL", "Hanscom", "Lovat", "Mbps", "Merkle", "Mgmt",
+    "Rasthofer", "TAXII", "WHOIS", "downweighting",
+    "evals", "exfil", "healthcheck", "incentivizes",
+    "recalc", "subcat", "superlinearly", "xlarge",
+    "MISP", "OASIS"
   ],
   "ignorePaths": [
     "node_modules/**",

@@ -1,0 +1,20 @@
+---
+/**
+ * Site-specific Breadcrumb wrapper.
+ * Delegates to the shared design-system Breadcrumb with the federation home label.
+ */
+import SharedBreadcrumb from '@aegis-initiative/design-system/components/Breadcrumb.astro';
+
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  items: BreadcrumbItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<SharedBreadcrumb items={items} homeLabel="AEGIS Federation" />
