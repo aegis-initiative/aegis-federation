@@ -74,9 +74,9 @@ jobs:
           # get_yesterday() helper disagreed with the workflow's notion of
           # "yesterday" when the workflow fired after 06:00 UTC.
           #
-          # Monorepo: scripts live under site/ and their internal paths
+          # Monorepo: scripts live under sites/federation/ and their internal paths
           # resolve relative to the site directory.
-          (cd site && python3 scripts/nightly-release.py \
+          (cd sites/federation && python3 scripts/nightly-release.py \
             --year "${{ steps.date.outputs.year }}" \
             --month "${{ steps.date.outputs.month }}" \
             --day "${{ steps.date.outputs.day }}")
@@ -93,8 +93,8 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           # Stage any rollup changes — release notes and VERSION file.
-          # Monorepo paths: both live inside site/.
-          git add site/src/pages/releases/ site/VERSION
+          # Monorepo paths: both live inside sites/federation/.
+          git add sites/federation/src/pages/releases/ sites/federation/VERSION
           if git diff --cached --quiet; then
             echo "No additional rollup changes"
           else

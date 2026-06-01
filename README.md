@@ -49,7 +49,7 @@ participation does not require AEGIS approval.
 │                      aegis-federation                        │
 │                                                              │
 │  ┌────────────┐    ┌──────────────────┐    ┌──────────────┐  │
-│  │   site/    │    │ feed-generator/  │    │     pds/     │  │
+│  │ sites/federation/ │ │ feed-generator/ │  │     pds/     │  │
 │  │            │    │                  │    │              │  │
 │  │  Astro:    │    │   Cloudflare     │    │ AT Protocol  │  │
 │  │  GFN-1     │◄───│      Worker      │◄───│   Personal   │  │
@@ -83,7 +83,7 @@ The full specification is published at **[aegis-federation.com](https://aegis-fe
 | RFCs | [/rfc/](https://aegis-federation.com/rfc/) |
 | Roadmap | [/roadmap/](https://aegis-federation.com/roadmap/) |
 
-The specification source markdown lives in [`site/src/content/docs/`](./site/src/content/docs/).
+The specification source markdown lives in [`sites/federation/src/content/docs/`](./sites/federation/src/content/docs/).
 
 ## Identity
 
@@ -103,7 +103,7 @@ the formal incentive analysis.
 
 | Directory | Purpose |
 |---|---|
-| `site/` | Astro site at [aegis-federation.com](https://aegis-federation.com) — homepage, GFN-1 specification, RFCs, roadmap |
+| `sites/federation/` | Astro site at [aegis-federation.com](https://aegis-federation.com) — homepage, GFN-1 specification, RFCs, roadmap |
 | `lexicons/` | AT Protocol Lexicon schemas for governance record types |
 | `feed-generator/` | Cloudflare Worker reference implementation of `app.bsky.feed.generator` for governance feeds |
 | `pds/` | Configuration for the AEGIS Initiative Personal Data Server |
@@ -113,7 +113,7 @@ the formal incentive analysis.
 
 ```bash
 # Documentation site
-cd site && npm install && npm run dev
+cd sites/federation && npm install && npm run dev
 # Site available at http://localhost:4321
 
 # Feed generator
@@ -123,7 +123,7 @@ cd feed-generator && npm install && npm run dev
 ## Contributing
 
 Specification changes flow through the [RFC process](https://aegis-federation.com/rfc/). Open an RFC as a PR against
-[`site/src/content/docs/rfc/`](./site/src/content/docs/rfc/).
+[`sites/federation/src/content/docs/rfc/`](./sites/federation/src/content/docs/rfc/).
 
 Code changes (feed generator, lexicons, tooling) follow conventional commits and the repository's PR template. See
 [`.github/pull_request_template.md`](.github/pull_request_template.md).
