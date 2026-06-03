@@ -155,5 +155,5 @@ The reference implementation in this repository is dual-licensed; see [LICENSE](
 
 Operated by **AEGIS Operations LLC**.
 
-AEGIS™ and *"Capability without constraint is not intelligence™"* are trademarks of **Finnoybu IP LLC**, used under
+AEGIS™ and *"Capability without constraint is not intelligence™"* are trademarks of **AEGIS Initiative**, used under
 license by **AEGIS Operations LLC**.
