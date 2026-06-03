@@ -1,0 +1,8 @@
+# CODEOWNERS — aegis-federation
+# Sole maintainer during pre-ratification.
+
+* @finnoybu
+
+/.github/ @finnoybu
+/docs/ @finnoybu
+/scripts/ @finnoybu

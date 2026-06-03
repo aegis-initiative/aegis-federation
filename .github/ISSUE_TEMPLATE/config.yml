@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: AEGIS Initiative Discussions
+    url: https://github.com/orgs/aegis-initiative/discussions
+    about: Ask questions and discuss proposals before opening new issue types.
