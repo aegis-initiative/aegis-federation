@@ -64,7 +64,7 @@ Some governance attestations contain sensitive evidence that publishers cannot d
 
 ### Stewardship Transition
 
-The specification is currently stewarded by AEGIS Operations LLC. Long-term, transition to a multi-stakeholder body (analogous to OASIS for STIX or the W3C for ActivityPub) is appropriate if and when ecosystem adoption justifies it. The transition will be proposed as an RFC with explicit transfer terms.
+The specification is currently stewarded by AEGIS Initiative. Long-term, transition to a multi-stakeholder body (analogous to OASIS for STIX or the W3C for ActivityPub) is appropriate if and when ecosystem adoption justifies it. The transition will be proposed as an RFC with explicit transfer terms.
 
 ### Network Versioning
 

@@ -45,6 +45,6 @@ The GFN specification deliberately does not define:
 
 ## Origin and Stewardship
 
-The GFN-1 specification originated within the AEGIS Initiative and was first published in March 2026. AEGIS Operations LLC operates the reference implementation and maintains the canonical specification at [aegis-federation.com](https://aegis-federation.com).
+The GFN-1 specification originated within the AEGIS Initiative and was first published in March 2026. AEGIS Initiative operates the reference implementation and maintains the canonical specification at [aegis-federation.com](https://aegis-federation.com).
 
 The specification is intended to outgrow its origin. Future stewardship may transition to a multi-stakeholder body if and when ecosystem adoption justifies it. Until that transition is formally proposed via RFC, AEGIS Initiative serves as steward in the same way MITRE serves as steward for STIX/TAXII: as the most credible publisher and the default reference, not as the network's controller.

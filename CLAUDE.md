@@ -40,7 +40,7 @@ Federation lands here, not in sibling repos.
 ## Identifier registry
 
 - **GitHub Org**: [github.com/aegis-initiative](https://github.com/aegis-initiative)
-- **Operating Entity**: AEGIS Operations LLC
+- **Operating Entity**: AEGIS Initiative
 - **Trademark Owner**: AEGIS Initiative (public attribution rule — internal IP-holder context lives in the
   workspace CLAUDE.md, never in public repo content)
 - **Spec Domain**: aegis-federation.com (canonical GFN-1 specification)

@@ -153,7 +153,7 @@ Code changes (feed generator, lexicons, tooling) follow conventional commits and
 The AEGIS Federation specification is released under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 The reference implementation in this repository is dual-licensed; see [LICENSE](./LICENSE) for details.
 
-Operated by **AEGIS Operations LLC**.
+Operated by **AEGIS Initiative**.
 
 AEGIS™ and *"Capability without constraint is not intelligence™"* are trademarks of **AEGIS Initiative**, used under
-license by **AEGIS Operations LLC**.
+license by **AEGIS Initiative**.
