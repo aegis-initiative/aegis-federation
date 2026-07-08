@@ -361,10 +361,13 @@ def update_daily_log(file_path, tag, builds_str, release_entries):
 
 def update_monthly(year, month, tag, builds_str, release_entries, day):
     """Add release entry to monthly file."""
-    file_path = f"src/pages/releases/{year}/{month}.md"
+    file_path = f"src/content/docs/releases/{year}/{month}.md"
 
-    month_name = datetime.now(timezone.utc).strftime("%B")
-    year_full = datetime.now(timezone.utc).strftime("%Y")
+    # Derive the display name from the TARGET month, not the run date —
+    # the nightly rollup for the last day of a month runs on the 1st of
+    # the next month, which used to mislabel the monthly page.
+    month_name = datetime(2000 + int(year), int(month), 1).strftime("%B")
+    year_full = f"20{year}"
 
     entries_text = "\n".join(release_entries)
     new_section = f"""## Release / {tag}
@@ -382,7 +385,6 @@ def update_monthly(year, month, tag, builds_str, release_entries, day):
         content = f"""---
 title: "{month_name} {year_full}"
 description: "Release notes for {month_name} {year_full}"
-template: doc
 sidebar:
   hidden: true
 ---
@@ -413,7 +415,7 @@ sidebar:
 
 def update_index(year, month, tag, summary):
     """Add/update entry in release index."""
-    index_path = "src/pages/releases/index.md"
+    index_path = "src/content/docs/releases/index.md"
 
     if not os.path.exists(index_path):
         print(f"Error: {index_path} not found", file=sys.stderr)
@@ -432,8 +434,10 @@ def update_index(year, month, tag, summary):
         content = entry_pattern.sub(entry_line, content)
         print(f"Updated index entry for {base_tag}")
     else:
-        year_full = datetime.now(timezone.utc).strftime("%Y")
-        month_name = datetime.now(timezone.utc).strftime("%B")
+        # Use the TARGET month, not the run date — the rollup for the
+        # last day of a month runs on the 1st of the next month.
+        year_full = f"20{year}"
+        month_name = datetime(2000 + int(year), int(month), 1).strftime("%B")
         month_header = f"### [{month_name}](/releases/{year}/{month}/)"
         year_header = f"## {year_full}"
 
@@ -483,7 +487,7 @@ def main():
     builds_str = first_hash if first_hash == last_hash else f"{first_hash} – {last_hash}"
 
     # Read the daily dev log
-    daily_path = f"src/pages/releases/{year}/{month}/{day}.md"
+    daily_path = f"src/content/docs/releases/{year}/{month}/{day}.md"
     if os.path.exists(daily_path):
         with open(daily_path, "r", encoding="utf-8") as f:
             dev_log_content = f.read()
