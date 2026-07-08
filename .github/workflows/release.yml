@@ -104,7 +104,7 @@ jobs:
           # from that directory. Git commands run from repo root.
           (cd sites/federation && python3 scripts/append-dev-log.py)
 
-          FILE="sites/federation/src/pages/releases/${YEAR}/${MONTH}/${DAY}.md"
+          FILE="sites/federation/src/content/docs/releases/${YEAR}/${MONTH}/${DAY}.md"
           git add "$FILE"
 
           if git diff --cached --quiet; then
