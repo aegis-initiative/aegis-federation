@@ -68,4 +68,4 @@ GFN-1 v1.0 is normative and stable. The reference network is operated by AEGIS I
 
 The AEGIS Federation specification is released under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). The reference implementation in the [aegis-federation repository](https://github.com/aegis-initiative/aegis-federation) is dual-licensed; see the repository's `LICENSE` file for details.
 
-AEGIS™ and *"Capability without constraint is not intelligence™"* are trademarks of AEGIS Initiative, used under license by AEGIS Initiative.
+AEGIS™ and *"Capability without constraint is not intelligence®"* are trademarks of AEGIS Initiative, used under license by AEGIS Initiative.
