@@ -94,7 +94,7 @@ jobs:
 
           # Stage any rollup changes — release notes and VERSION file.
           # Monorepo paths: both live inside sites/federation/.
-          git add sites/federation/src/pages/releases/ sites/federation/VERSION
+          git add sites/federation/src/content/docs/releases/ sites/federation/VERSION
           if git diff --cached --quiet; then
             echo "No additional rollup changes"
           else
