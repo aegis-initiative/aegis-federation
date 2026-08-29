@@ -9,6 +9,11 @@ Release notes start in April 2026 with the introduction of the auto-release pipe
 
 ## 2026
 
+
+### [August](/releases/26/8/)
+
+- [v26.8.28](/releases/26/8/#release--v26828) — Merged remote-tracking branch from origin/main
+
 ### [July](/releases/26/7/)
 
 - [v26.7.8](/releases/26/7/#release--v2678) — Fixed styling issues on release pages via content system reorganization
