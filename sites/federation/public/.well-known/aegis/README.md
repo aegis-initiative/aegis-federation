@@ -174,6 +174,8 @@ scales.
 
 The specifications are at
 <https://github.com/aegis-initiative/aegis-governance> (federation
+directory). The Lexicon schemas are at
+<https://github.com/aegis-initiative/aegis-federation> (lexicons
 directory). The full ecosystem is documented at
 <https://aegis-docs.com>.
 
