@@ -151,8 +151,8 @@ A conforming implementation publishes a self-attestation at a discoverable locat
 - The implementation name and version
 - The DID of the operating node
 
-Schema for the conformance attestation is provided as a Lexicon in the aegis-federation repository (private).
+Schema for the conformance attestation is provided as a Lexicon in the [aegis-federation repository](https://github.com/aegis-initiative/aegis-federation/tree/main/lexicons).
 
 ## Reference test vectors
 
-Test vectors for each event type, with valid and invalid examples, are maintained in the aegis-federation repository (private) under `test-vectors/`. Implementations are encouraged to validate against these vectors as part of their CI.
+Test vectors for each event type, with valid and invalid examples, are maintained in the [aegis-federation repository](https://github.com/aegis-initiative/aegis-federation) under `test-vectors/`. Implementations are encouraged to validate against these vectors as part of their CI.

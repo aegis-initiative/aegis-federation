@@ -85,4 +85,4 @@ The roadmap explicitly does not include:
 
 ## Contributing
 
-If you have a topic that should appear on this roadmap, open a draft RFC against the aegis-federation repository (private — contact the AEGIS Initiative to discuss access). The RFC need not be complete to start the conversation — the [RFC process](/rfc/) explicitly supports placeholder RFCs to reserve a number and document intent.
+If you have a topic that should appear on this roadmap, open a draft RFC against the [aegis-federation repository](https://github.com/aegis-initiative/aegis-federation/blob/main/rfc/). The RFC need not be complete to start the conversation — the [RFC process](/rfc/) explicitly supports placeholder RFCs to reserve a number and document intent.
