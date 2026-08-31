@@ -25,7 +25,7 @@ RFC numbering and process are aligned with the broader AEGIS RFC series originat
 
 The AEGIS Federation specification evolves through the RFC process:
 
-1. **Draft** — A proposed change is written as an RFC with a problem statement, design, and acceptance criteria. Drafts are submitted as PRs to the [aegis-federation repository](https://github.com/aegis-initiative/aegis-federation).
+1. **Draft** — A proposed change is written as an RFC with a problem statement, design, and acceptance criteria. Drafts are submitted as PRs to the aegis-federation repository (private — contact the AEGIS Initiative to discuss access).
 2. **Discussion** — Drafts are open for public comment for a minimum of 14 days.
 3. **Ratification** — Once consensus is reached among active implementers, the RFC is marked Final and the affected specification documents are updated in the same PR.
 4. **Frozen** — Final RFCs are frozen at a specific version. Subsequent changes require a new RFC that supersedes the prior one.

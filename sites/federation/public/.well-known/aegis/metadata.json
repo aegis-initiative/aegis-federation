@@ -89,7 +89,6 @@
     "governance.incident_notice.v1"
   ],
   "repositories": {
-    "federation_site_and_lexicons": "https://github.com/aegis-initiative/aegis-federation",
     "federation_specifications": "https://github.com/aegis-initiative/aegis-governance",
     "organization": "https://github.com/aegis-initiative"
   },
