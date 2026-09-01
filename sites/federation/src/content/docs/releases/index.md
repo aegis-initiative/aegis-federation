@@ -12,6 +12,7 @@ Release notes start in April 2026 with the introduction of the auto-release pipe
 
 ### [August](/releases/26/8/)
 
+- [v26.8.31](/releases/26/8/#release--v26831) — AEGIS Federation GitHub repository made public with restored links
 - [v26.8.29](/releases/26/8/#release--v26829) — Fix Markdown linting issue to prevent pipeline failures
 - [v26.8.28](/releases/26/8/#release--v26828) — Merged remote-tracking branch from origin/main
 
