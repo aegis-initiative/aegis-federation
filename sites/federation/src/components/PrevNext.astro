@@ -1,0 +1,21 @@
+---
+/**
+ * Site-specific PrevNext wrapper.
+ * Delegates to the shared design-system PrevNext (no site-specific props).
+ */
+import SharedPrevNext from '@aegis-initiative/design-system/components/PrevNext.astro';
+
+interface NavItem {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  prev?: NavItem;
+  next?: NavItem;
+}
+
+const { prev, next } = Astro.props;
+---
+
+<SharedPrevNext prev={prev} next={next} />
