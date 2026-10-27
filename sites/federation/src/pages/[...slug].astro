@@ -2,6 +2,37 @@
 import { getCollection, render } from 'astro:content';
 import DocLayout from '../layouts/DocLayout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
+import PrevNext from '../components/PrevNext.astro';
+import { nav, type NavItem } from '../components/Sidebar.astro';
+
+// Flatten the sidebar's nav tree into a single ordered list, so prev/next
+// is always derived from the same source as the sidebar itself rather than
+// a second hand-maintained array that can drift out of sync (see
+// aegis-initiative/aegis-initiative#66).
+//
+// Only leaf items are included. Several top-level groups' own slugs
+// duplicate a child's slug (e.g. "RFCs" and its "Index" child both point at
+// /rfc/) — including the group entry too would put that page in navOrder
+// twice and make it point at itself as its own "next". A couple of groups
+// (Overview, Specification) have no leaf matching the group's own slug at
+// all, which is fine — they're just not reachable as their own page.
+function flattenNav(items: NavItem[]): { slug: string; label: string }[] {
+  return items.flatMap((item) =>
+    item.items ? flattenNav(item.items) : [{ slug: item.slug, label: item.label }]
+  );
+}
+
+const navOrder = flattenNav(nav);
+
+// One entry ("Introduction", under Overview) uses slug '' to mean the site
+// root rather than a page under this [...slug].astro route — it's rendered
+// by src/pages/index.astro instead. It will never match entry.id (which is
+// never an empty string), so it only ever shows up as a prev/next link
+// *target*, never as the "current" page. Build its href as "/" rather than
+// the "//" that the usual `/${slug}/` template would produce.
+function hrefFor(slug: string): string {
+  return slug === '' ? '/' : `/${slug}/`;
+}
 
 export async function getStaticPaths() {
   const docs = await getCollection('docs');
@@ -49,9 +80,23 @@ if (parts[0] === 'releases' && parts.length >= 3) {
     { label: entry.data.title },
   ];
 }
+
+// Compute prev/next from the same flattened sidebar order used above.
+// Pages not in the sidebar (e.g. /releases/* entries beyond the overview)
+// simply get no prev/next, matching how the shared PrevNext component
+// renders nothing when both are undefined.
+const slug = entry.id;
+const navIdx = navOrder.findIndex((n) => n.slug === slug);
+const prev = navIdx > 0
+  ? { label: navOrder[navIdx - 1].label, href: hrefFor(navOrder[navIdx - 1].slug) }
+  : undefined;
+const next = navIdx >= 0 && navIdx < navOrder.length - 1
+  ? { label: navOrder[navIdx + 1].label, href: hrefFor(navOrder[navIdx + 1].slug) }
+  : undefined;
 ---
 
 <DocLayout title={entry.data.title} description={entry.data.description}>
   <Breadcrumb items={breadcrumbItems} slot="breadcrumb" />
   <Content />
+  <PrevNext prev={prev} next={next} />
 </DocLayout>
