@@ -8,3 +8,14 @@ ENVIRONMENT = "production"
 [[kv_namespaces]]
 binding = "FEED_CACHE"
 id = "placeholder-replace-with-actual-id"
+
+# Holds the single persistent Jetstream connection (see
+# src/firehose-consumer.ts for why this needs a Durable Object, and the
+# cost/architecture note about outbound WebSockets not hibernating).
+[[durable_objects.bindings]]
+name = "FIREHOSE"
+class_name = "FirehoseConsumer"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["FirehoseConsumer"]
