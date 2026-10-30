@@ -17,18 +17,20 @@
           "affectedSystems": { "type": "array", "items": { "type": "string", "format": "did" } },
           "timeline": {
             "type": "array",
-            "items": {
-              "type": "object",
-              "required": ["timestamp", "event"],
-              "properties": {
-                "timestamp": { "type": "string", "format": "datetime" },
-                "event": { "type": "string" }
-              }
-            }
+            "items": { "type": "ref", "ref": "#timelineEntry" }
           },
           "status": { "type": "string", "knownValues": ["open", "investigating", "mitigated", "resolved"] },
           "createdAt": { "type": "string", "format": "datetime" }
         }
+      }
+    },
+    "timelineEntry": {
+      "type": "object",
+      "description": "A single timestamped event within an incident's timeline",
+      "required": ["timestamp", "event"],
+      "properties": {
+        "timestamp": { "type": "string", "format": "datetime" },
+        "event": { "type": "string" }
       }
     }
   }

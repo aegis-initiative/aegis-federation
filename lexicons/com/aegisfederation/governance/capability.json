@@ -15,20 +15,22 @@
           "description": { "type": "string", "maxLength": 2000 },
           "capabilities": {
             "type": "array",
-            "items": {
-              "type": "object",
-              "required": ["id", "description", "riskLevel"],
-              "properties": {
-                "id": { "type": "string" },
-                "description": { "type": "string" },
-                "riskLevel": { "type": "string", "knownValues": ["low", "medium", "high", "critical"] },
-                "constraints": { "type": "object" }
-              }
-            }
+            "items": { "type": "ref", "ref": "#capabilityEntry" }
           },
           "denyByDefault": { "type": "boolean" },
           "createdAt": { "type": "string", "format": "datetime" }
         }
+      }
+    },
+    "capabilityEntry": {
+      "type": "object",
+      "description": "A single capability declaration within a capability set",
+      "required": ["id", "description", "riskLevel"],
+      "properties": {
+        "id": { "type": "string" },
+        "description": { "type": "string" },
+        "riskLevel": { "type": "string", "knownValues": ["low", "medium", "high", "critical"] },
+        "constraints": { "type": "unknown" }
       }
     }
   }
