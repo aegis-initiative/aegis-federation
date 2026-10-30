@@ -126,7 +126,8 @@ Valid/invalid record examples for each schema live in [`../test-vectors/`](../te
 These schemas are consumed by:
 
 - **Feed Generator** (`/feed-generator`) — Filters the AT Protocol firehose for matching records
-  (firehose connection not yet implemented — tracked in [#1](https://github.com/aegis-initiative/aegis-federation/issues/1))
+  via a Durable Object holding a persistent [Jetstream](https://github.com/bluesky-social/jetstream)
+  connection, filtered server-side with `wantedCollections=com.aegisfederation.governance.*`
 - **AEGIS Core** — Validates governance records before publishing
 - **AEGIS Platform** — Publishes governance signals using these schemas
 - **Federation Participants** — Subscribe to and validate incoming governance records
