@@ -1,0 +1,17 @@
+{
+  "$type": "com.aegisfederation.governance.attestation",
+  "event_id": "3d4e5f6a-1b2c-4d8e-9f0a-1b2c3d4e5f6a",
+  "timestamp": "2026-03-12T14:00:00-05:00",
+  "publisher_did": "did:aegis:enterprise-ai-001",
+  "event_type": "governance.attestation.v1",
+  "payload": {
+    "aegis_version": "0.1.2",
+    "risk_model_id": "aegis-core-risk-v1",
+    "compliance_profiles": ["nist.ai.rmf.profile"],
+    "attested_at": "2026-03-12T14:00:00-05:00",
+    "attesting_did": "did:aegis:enterprise-ai-001",
+    "controls_implemented": ["RISK-SCORE", "TOOL-GATE", "DATA-BOUNDARY"],
+    "assurance_level": "internal"
+  },
+  "signature": "BASE64_SIGNATURE"
+}

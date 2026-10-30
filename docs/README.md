@@ -67,7 +67,7 @@ The feed generator is a Cloudflare Worker that implements the AT Protocol feed g
 |---------|-------------|-----------------|
 | `aegis-all` | All governance signals | All `com.aegisfederation.governance.*` records |
 | `aegis-critical` | Critical signals only | Records with `severity: "critical"` or `severity: "high"` |
-| `aegis-incidents` | Active incidents | `com.aegisfederation.governance.incident` records with `status != "resolved"` |
+| `aegis-incidents` | Incident notices | `com.aegisfederation.governance.incidentNotice` records. (The legacy `incident` record's `status` field -- used to filter out resolved incidents -- has no equivalent in the GFN-1 spec's `incident_notice.v1`, realigned per RFC-0009; incident notices are point-in-time disclosures, not mutable tickets.) |
 
 **DID Resolution**: The feed generator serves its own `did:web` document at `/.well-known/did.json`, declaring itself as
 an `AtprotoFeedGenerator` service.

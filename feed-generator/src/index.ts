@@ -60,7 +60,13 @@ export default {
     // Get feed skeleton
     if (path === '/xrpc/app.bsky.feed.getFeedSkeleton') {
       const feed = url.searchParams.get('feed');
-      // TODO: Implement actual feed generation from AT Protocol firehose
+      // TODO (tracked in #1): connect to the AT Protocol relay firehose and
+      // filter for records matching the 5 GFN-1 lexicons under
+      // lexicons/com/aegisfederation/governance/ (realigned to the spec's
+      // event_type registry in RFC-0009): circumventionReport, riskSignal,
+      // policyUpdate, attestation, incidentNotice. There is no legacy
+      // "signal" record to filter for anymore -- it was split into
+      // circumventionReport and riskSignal.
       return Response.json({
         feed: [],
         cursor: '',

@@ -1,0 +1,13 @@
+{
+  "name": "aegis-federation-test-vectors",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Valid/invalid record test vectors for the GFN-1 lexicons in com/aegisfederation/governance/, referenced from conformance.md",
+  "type": "module",
+  "scripts": {
+    "validate": "node validate.mjs"
+  },
+  "devDependencies": {
+    "@atproto/lexicon": "^0.7.17"
+  }
+}

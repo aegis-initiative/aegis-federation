@@ -1,0 +1,57 @@
+{
+  "lexicon": 1,
+  "id": "com.aegisfederation.governance.riskSignal",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "GFN-1 governance.risk_signal.v1 -- aggregated telemetry describing emerging governance risk. Field names are snake_case to match the GFN-1 spec exactly (see RFC-0009).",
+      "key": "tid",
+      "record": {
+        "type": "object",
+        "required": ["event_id", "timestamp", "publisher_did", "event_type", "payload", "signature"],
+        "properties": {
+          "event_id": { "type": "string", "description": "Globally unique identifier (UUID recommended)" },
+          "timestamp": { "type": "string", "format": "datetime", "description": "Publish timestamp" },
+          "publisher_did": { "type": "string", "description": "did:aegis:* of the publishing node" },
+          "event_type": { "type": "string", "const": "governance.risk_signal.v1" },
+          "payload": { "type": "ref", "ref": "#payload" },
+          "signature": { "type": "string", "description": "Signature of the canonicalized envelope, excluding this field" },
+          "schema_version": { "type": "string" },
+          "correlation_id": { "type": "string", "description": "Groups related events" },
+          "references": { "type": "array", "items": { "type": "string", "format": "uri" } },
+          "tags": { "type": "array", "items": { "type": "string" } },
+          "visibility": { "type": "string", "enum": ["public", "restricted", "private"] },
+          "ttl_seconds": { "type": "integer", "description": "Suggested retention TTL for caches" }
+        }
+      }
+    },
+    "payload": {
+      "type": "object",
+      "description": "governance.risk_signal.v1 payload",
+      "required": ["risk_category", "severity", "trend", "scope", "summary"],
+      "properties": {
+        "risk_category": {
+          "type": "string",
+          "description": "e.g. model_manipulation, exfiltration_attempts, policy_drift"
+        },
+        "severity": { "type": "string", "enum": ["advisory", "warning", "critical"] },
+        "trend": { "type": "string", "enum": ["rising", "stable", "declining"] },
+        "scope": { "type": "string", "description": "e.g. global, regional, tenant, org" },
+        "summary": { "type": "string" },
+        "metrics": {
+          "type": "unknown",
+          "description": "Aggregated counters or rates (map[string, any] in the GFN-1 spec; no sensitive data)"
+        },
+        "related_techniques": { "type": "array", "items": { "type": "string" } },
+        "related_models": { "type": "array", "items": { "type": "string" } },
+        "recommended_actions": { "type": "array", "items": { "type": "string" } },
+        "confidence": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Publisher confidence as an integer percentage (0-100), scaled from the GFN-1 spec's 0..1 float -- see circumventionReport.json for the rationale."
+        }
+      }
+    }
+  }
+}

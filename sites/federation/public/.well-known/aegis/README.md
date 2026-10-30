@@ -39,26 +39,31 @@ signal published to the federation is signed with that key and verifiable by any
 
 ## The five Lexicon record types
 
-The federation defines five record types under the NSID namespace `com.aegisfederation.governance`:
+The federation defines five record types under the NSID namespace `com.aegisfederation.governance`, one
+per [GFN-1 registered `event_type`](https://aegis-federation.com/spec/schema/#3-event-types-registry)
+(realigned in [RFC-0009](https://aegis-federation.com/rfc/0009/)):
 
-1. **Signal** (`com.aegisfederation.governance.signal`) — Governance intelligence: circumvention reports, risk
-telemetry, emerging threat patterns. This is the core of collective defense. When your deployment detects something,
-publishing a signal means every other node learns from it.
+1. **Circumvention Report** (`com.aegisfederation.governance.circumventionReport`, `governance.circumvention_report.v1`)
+— A technique observed or validated that attempts to bypass governance controls. This is the core of collective
+defense. When your deployment detects something, publishing one means every other node learns from it.
 
-2. **Attestation** (`com.aegisfederation.governance.attestation`) — Governance posture statements. A node publishes an
-attestation to declare its compliance status, audit results, or governance configuration. Attestations are how trust is
-demonstrated, not just claimed.
+2. **Risk Signal** (`com.aegisfederation.governance.riskSignal`, `governance.risk_signal.v1`) — Aggregated telemetry
+describing emerging governance risk: trends, not individual incidents.
 
-3. **Capability** (`com.aegisfederation.governance.capability`) — Declarations of what governance capabilities a node
-supports. This enables nodes to discover each other's strengths and route signals to nodes that can act on them.
+3. **Policy Update** (`com.aegisfederation.governance.policyUpdate`, `governance.policy_update.v1`) — Policy updates
+and governance rule changes. When a node updates its governance policies, it can publish the change so that peer
+nodes can evaluate whether to adopt similar rules.
 
-4. **Incident** (`com.aegisfederation.governance.incident`) — Structured incident reports. When a governance breach or
-near-miss occurs, the publishing node can share what happened, what was affected, and what mitigations were applied —
-without exposing sensitive operational details.
+4. **Attestation** (`com.aegisfederation.governance.attestation`, `governance.attestation.v1`) — Governance posture
+statements. A node publishes an attestation to declare its compliance status, audit results, governance
+configuration, and the controls it has implemented. Attestations are how trust is demonstrated, not just claimed.
+This also covers what used to be a separate "Capability" record — GFN-1 has no standalone
+capability-declaration event type, so capability/control declarations now live here as `controls_implemented`.
 
-5. **Policy** (`com.aegisfederation.governance.policy`) — Policy updates and governance rule changes. When a node
-updates its governance policies, it can publish the change so that peer nodes can evaluate whether to adopt similar
-rules.
+5. **Incident Notice** (`com.aegisfederation.governance.incidentNotice`, `governance.incident_notice.v1`) — Discloses
+a governance failure or safety incident. When a governance breach or near-miss occurs, the publishing node can share
+what happened, what was affected, and what mitigations were applied — without exposing sensitive operational
+details.
 
 ## The trust model
 
