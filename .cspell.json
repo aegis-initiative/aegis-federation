@@ -16,7 +16,7 @@
     "Rasthofer", "TAXII", "WHOIS", "downweighting",
     "evals", "exfil", "healthcheck", "incentivizes",
     "recalc", "subcat", "superlinearly", "xlarge",
-    "MISP", "OASIS"
+    "MISP", "OASIS", "NSID", "NSIDs", "BLOBSTORE"
   ],
   "ignorePaths": [
     "node_modules/**",

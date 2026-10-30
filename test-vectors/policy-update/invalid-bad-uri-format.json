@@ -1,0 +1,16 @@
+{
+  "$type": "com.aegisfederation.governance.policyUpdate",
+  "event_id": "7a1c9e2d-4b56-4e8a-9f3d-1c2b3a4d5e6f",
+  "timestamp": "2026-03-10T09:00:00-05:00",
+  "publisher_did": "did:aegis:policy-authority-001",
+  "event_type": "governance.policy_update.v1",
+  "payload": {
+    "policy_id": "nist.ai.rmf.profile",
+    "policy_version": "1.2.0",
+    "policy_authority_did": "did:aegis:policy-authority-001",
+    "effective_date": "2026-04-01T00:00:00-05:00",
+    "change_summary": "policy_uri below is not a valid URI -- must be rejected.",
+    "policy_uri": "not a uri at all"
+  },
+  "signature": "BASE64_SIGNATURE"
+}

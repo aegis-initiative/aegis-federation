@@ -1,0 +1,49 @@
+{
+  "lexicon": 1,
+  "id": "com.aegisfederation.governance.incidentNotice",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "GFN-1 governance.incident_notice.v1 -- discloses a governance failure or safety incident to improve ecosystem resilience. Field names are snake_case to match the GFN-1 spec exactly (see RFC-0009). Supersedes the legacy com.aegisfederation.governance.incident record; the spec's incident_notice.v1 does not define a timeline field, so the old record's timelineEntry concept is not carried forward -- use follow_up_actions and links for post-incident detail.",
+      "key": "tid",
+      "record": {
+        "type": "object",
+        "required": ["event_id", "timestamp", "publisher_did", "event_type", "payload", "signature"],
+        "properties": {
+          "event_id": { "type": "string", "description": "Globally unique identifier (UUID recommended)" },
+          "timestamp": { "type": "string", "format": "datetime", "description": "Publish timestamp" },
+          "publisher_did": { "type": "string", "description": "did:aegis:* of the publishing node" },
+          "event_type": { "type": "string", "const": "governance.incident_notice.v1" },
+          "payload": { "type": "ref", "ref": "#payload" },
+          "signature": { "type": "string", "description": "Signature of the canonicalized envelope, excluding this field" },
+          "schema_version": { "type": "string" },
+          "correlation_id": { "type": "string", "description": "Groups related events" },
+          "references": { "type": "array", "items": { "type": "string", "format": "uri" } },
+          "tags": { "type": "array", "items": { "type": "string" } },
+          "visibility": { "type": "string", "enum": ["public", "restricted", "private"] },
+          "ttl_seconds": { "type": "integer", "description": "Suggested retention TTL for caches" }
+        }
+      }
+    },
+    "payload": {
+      "type": "object",
+      "description": "governance.incident_notice.v1 payload",
+      "required": ["incident_id", "incident_class", "severity", "occurred_at", "summary"],
+      "properties": {
+        "incident_id": { "type": "string" },
+        "incident_class": {
+          "type": "string",
+          "description": "e.g. bypass_success, exfiltration, harmful_output, policy_failure"
+        },
+        "severity": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+        "occurred_at": { "type": "string", "format": "datetime" },
+        "summary": { "type": "string" },
+        "impact": { "type": "string" },
+        "root_cause_hypothesis": { "type": "string" },
+        "mitigations_applied": { "type": "array", "items": { "type": "string" } },
+        "follow_up_actions": { "type": "array", "items": { "type": "string" } },
+        "links": { "type": "array", "items": { "type": "string", "format": "uri" } }
+      }
+    }
+  }
+}

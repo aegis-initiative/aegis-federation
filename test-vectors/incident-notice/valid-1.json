@@ -1,0 +1,17 @@
+{
+  "$type": "com.aegisfederation.governance.incidentNotice",
+  "event_id": "9b8c7d6e-5f4a-3b2c-1d0e-9f8a7b6c5d4e",
+  "timestamp": "2026-03-15T08:00:00-05:00",
+  "publisher_did": "did:aegis:enterprise-ai-001",
+  "event_type": "governance.incident_notice.v1",
+  "payload": {
+    "incident_id": "INC-2026-0315-001",
+    "incident_class": "bypass_success",
+    "severity": "high",
+    "occurred_at": "2026-03-15T06:45:00-05:00",
+    "summary": "A delegation chain allowed a non-owner instruction to execute with escalated privileges.",
+    "mitigations_applied": ["Delegation chain authorization enforced at each hop"],
+    "follow_up_actions": ["Audit all active delegation chains issued in the prior 24h"]
+  },
+  "signature": "BASE64_SIGNATURE"
+}
