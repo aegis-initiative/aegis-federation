@@ -1,0 +1,75 @@
+{
+  "lexicon": 1,
+  "id": "com.aegisfederation.governance.circumventionReport",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "GFN-1 governance.circumvention_report.v1 -- a technique observed or validated that attempts to bypass governance controls. Field names are snake_case to match the GFN-1 spec exactly (see RFC-0009), diverging from AT Protocol's usual camelCase convention for cross-spec consistency with RFC-0004 and STIX-style peers.",
+      "key": "tid",
+      "record": {
+        "type": "object",
+        "required": ["event_id", "timestamp", "publisher_did", "event_type", "payload", "signature"],
+        "properties": {
+          "event_id": { "type": "string", "description": "Globally unique identifier (UUID recommended)" },
+          "timestamp": { "type": "string", "format": "datetime", "description": "Publish timestamp" },
+          "publisher_did": { "type": "string", "description": "did:aegis:* of the publishing node" },
+          "event_type": { "type": "string", "const": "governance.circumvention_report.v1" },
+          "payload": { "type": "ref", "ref": "#payload" },
+          "signature": { "type": "string", "description": "Signature of the canonicalized envelope, excluding this field" },
+          "schema_version": { "type": "string" },
+          "correlation_id": { "type": "string", "description": "Groups related events" },
+          "references": { "type": "array", "items": { "type": "string", "format": "uri" } },
+          "tags": { "type": "array", "items": { "type": "string" } },
+          "visibility": { "type": "string", "enum": ["public", "restricted", "private"] },
+          "ttl_seconds": { "type": "integer", "description": "Suggested retention TTL for caches" }
+        }
+      }
+    },
+    "payload": {
+      "type": "object",
+      "description": "governance.circumvention_report.v1 payload",
+      "required": ["technique_id", "category", "severity", "description", "observed_at"],
+      "properties": {
+        "technique_id": { "type": "string", "description": "Stable identifier, e.g. PROMPT-CHAIN-042" },
+        "category": {
+          "type": "string",
+          "knownValues": ["prompt-engineering", "tool-misuse", "social-engineering", "data-exfiltration"]
+        },
+        "severity": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+        "description": { "type": "string" },
+        "observed_at": { "type": "string", "format": "datetime" },
+        "attack_pattern": {
+          "type": "string",
+          "description": "Abstract pattern descriptor -- NOT a copy/paste exploit"
+        },
+        "indicators": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Non-sensitive indicators (e.g. hashes of patterns, not raw prompts)"
+        },
+        "affected_models": { "type": "array", "items": { "type": "string" } },
+        "affected_controls": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Control IDs, e.g. RISK-SCORE, TOOL-GATE, DATA-BOUNDARY"
+        },
+        "mitigation_recommendations": { "type": "array", "items": { "type": "string" } },
+        "confidence": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Publisher confidence as an integer percentage (0-100). The GFN-1 spec defines this field as a 0..1 float; AT Protocol Lexicon v1 has no floating-point primitive type, so this lexicon represents it scaled to a percentage. Divide by 100 when translating to/from the canonical GFN-1 envelope."
+        },
+        "exploit_reproducibility": {
+          "type": "string",
+          "enum": ["theoretical", "observed", "validated"]
+        },
+        "attachments": {
+          "type": "array",
+          "items": { "type": "string", "format": "uri" },
+          "description": "Pointers to restricted artifacts, only if access-controlled"
+        }
+      }
+    }
+  }
+}

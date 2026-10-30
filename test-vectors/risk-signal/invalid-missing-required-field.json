@@ -1,0 +1,14 @@
+{
+  "$type": "com.aegisfederation.governance.riskSignal",
+  "event_id": "8f0b6a5b-7e03-4f0d-b2c3-9fd7f8f7d2d1",
+  "timestamp": "2026-03-04T22:45:00-05:00",
+  "publisher_did": "did:aegis:enterprise-ai-001",
+  "event_type": "governance.risk_signal.v1",
+  "payload": {
+    "risk_category": "model_manipulation",
+    "severity": "warning",
+    "trend": "rising",
+    "summary": "Missing the required 'scope' field -- must be rejected."
+  },
+  "signature": "BASE64_SIGNATURE"
+}

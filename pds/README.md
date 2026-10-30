@@ -75,18 +75,27 @@ participants to discover and interact with AEGIS governance data.
 Once the PDS is running, governance records can be published using the AT Protocol XRPC API:
 
 ```bash
-# Create a governance signal record
+# Create a governance risk signal record (GFN-1 governance.risk_signal.v1,
+# see lexicons/com/aegisfederation/governance/riskSignal.json)
 curl -X POST https://aegis-federation.com/xrpc/com.atproto.repo.createRecord \
   -H "Authorization: Bearer $ACCESS_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
     "repo": "did:web:aegis-federation.com",
-    "collection": "com.aegisfederation.governance.signal",
+    "collection": "com.aegisfederation.governance.riskSignal",
     "record": {
-      "type": "advisory",
-      "severity": "medium",
-      "summary": "New governance policy effective 2026-04-01",
-      "createdAt": "2026-03-23T00:00:00Z"
+      "event_id": "8f0b6a5b-7e03-4f0d-b2c3-9fd7f8f7d2d1",
+      "timestamp": "2026-03-23T00:00:00Z",
+      "publisher_did": "did:web:aegis-federation.com",
+      "event_type": "governance.risk_signal.v1",
+      "payload": {
+        "risk_category": "policy_drift",
+        "severity": "advisory",
+        "trend": "stable",
+        "scope": "global",
+        "summary": "New governance policy effective 2026-04-01"
+      },
+      "signature": "BASE64_SIGNATURE"
     }
   }'
 ```

@@ -4,21 +4,45 @@
   "defs": {
     "main": {
       "type": "record",
-      "description": "Governance compliance attestation for an AEGIS-governed entity",
+      "description": "GFN-1 governance.attestation.v1 -- declares governance posture and enables inter-node trust decisions. Field names are snake_case to match the GFN-1 spec exactly (see RFC-0009). Supersedes the legacy attestation shape (entityDid/capabilitySetId/...) and the standalone com.aegisfederation.governance.capability record -- capability/control declarations are now expressed via controls_implemented and compliance_profiles below rather than a separate record type, since GFN-1 does not register a capability-declaration event type.",
       "key": "tid",
       "record": {
         "type": "object",
-        "required": ["entityDid", "capabilitySetId", "governanceVersion", "attestedBy", "validFrom", "createdAt"],
+        "required": ["event_id", "timestamp", "publisher_did", "event_type", "payload", "signature"],
         "properties": {
-          "entityDid": { "type": "string", "format": "did" },
-          "capabilitySetId": { "type": "string" },
-          "governanceVersion": { "type": "string" },
-          "attestedBy": { "type": "string", "format": "did" },
-          "validFrom": { "type": "string", "format": "datetime" },
-          "validUntil": { "type": "string", "format": "datetime" },
-          "auditEndpoint": { "type": "string", "format": "uri" },
-          "createdAt": { "type": "string", "format": "datetime" }
+          "event_id": { "type": "string", "description": "Globally unique identifier (UUID recommended)" },
+          "timestamp": { "type": "string", "format": "datetime", "description": "Publish timestamp" },
+          "publisher_did": { "type": "string", "description": "did:aegis:* of the publishing node" },
+          "event_type": { "type": "string", "const": "governance.attestation.v1" },
+          "payload": { "type": "ref", "ref": "#payload" },
+          "signature": { "type": "string", "description": "Signature of the canonicalized envelope, excluding this field" },
+          "schema_version": { "type": "string" },
+          "correlation_id": { "type": "string", "description": "Groups related events" },
+          "references": { "type": "array", "items": { "type": "string", "format": "uri" } },
+          "tags": { "type": "array", "items": { "type": "string" } },
+          "visibility": { "type": "string", "enum": ["public", "restricted", "private"] },
+          "ttl_seconds": { "type": "integer", "description": "Suggested retention TTL for caches" }
         }
+      }
+    },
+    "payload": {
+      "type": "object",
+      "description": "governance.attestation.v1 payload",
+      "required": ["aegis_version", "risk_model_id", "compliance_profiles", "attested_at", "attesting_did"],
+      "properties": {
+        "aegis_version": { "type": "string" },
+        "risk_model_id": { "type": "string" },
+        "compliance_profiles": { "type": "array", "items": { "type": "string" } },
+        "attested_at": { "type": "string", "format": "datetime" },
+        "attesting_did": { "type": "string", "description": "DID of the system being attested" },
+        "audit_evidence_uri": { "type": "string", "format": "uri", "description": "Restricted evidence bundle" },
+        "auditor_did": { "type": "string", "description": "Third-party auditor or internal assurance identity" },
+        "controls_implemented": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Control IDs -- carries forward the capability/control-declaration concept that the retired com.aegisfederation.governance.capability record used to represent as its own record type"
+        },
+        "assurance_level": { "type": "string", "enum": ["self", "internal", "external"] }
       }
     }
   }

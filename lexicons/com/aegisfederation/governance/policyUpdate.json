@@ -1,0 +1,46 @@
+{
+  "lexicon": 1,
+  "id": "com.aegisfederation.governance.policyUpdate",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "GFN-1 governance.policy_update.v1 -- publishes a governance policy document, profile, or delta. Field names are snake_case to match the GFN-1 spec exactly (see RFC-0009). Supersedes the legacy com.aegisfederation.governance.policy record.",
+      "key": "tid",
+      "record": {
+        "type": "object",
+        "required": ["event_id", "timestamp", "publisher_did", "event_type", "payload", "signature"],
+        "properties": {
+          "event_id": { "type": "string", "description": "Globally unique identifier (UUID recommended)" },
+          "timestamp": { "type": "string", "format": "datetime", "description": "Publish timestamp" },
+          "publisher_did": { "type": "string", "description": "did:aegis:* of the publishing node" },
+          "event_type": { "type": "string", "const": "governance.policy_update.v1" },
+          "payload": { "type": "ref", "ref": "#payload" },
+          "signature": { "type": "string", "description": "Signature of the canonicalized envelope, excluding this field" },
+          "schema_version": { "type": "string" },
+          "correlation_id": { "type": "string", "description": "Groups related events" },
+          "references": { "type": "array", "items": { "type": "string", "format": "uri" } },
+          "tags": { "type": "array", "items": { "type": "string" } },
+          "visibility": { "type": "string", "knownValues": ["public", "restricted", "private"] },
+          "ttl_seconds": { "type": "integer", "description": "Suggested retention TTL for caches" }
+        }
+      }
+    },
+    "payload": {
+      "type": "object",
+      "description": "governance.policy_update.v1 payload",
+      "required": ["policy_id", "policy_version", "policy_authority_did", "effective_date", "change_summary", "policy_uri"],
+      "properties": {
+        "policy_id": { "type": "string", "description": "Stable policy identifier, e.g. nist.ai.rmf.profile" },
+        "policy_version": { "type": "string", "description": "Semantic version recommended" },
+        "policy_authority_did": { "type": "string", "description": "DID of the authority publishing this policy" },
+        "effective_date": { "type": "string", "format": "datetime" },
+        "change_summary": { "type": "string" },
+        "policy_uri": { "type": "string", "format": "uri", "description": "Canonical location of the full policy document" },
+        "supersedes": { "type": "string", "description": "Previous version identifier" },
+        "compatibility": { "type": "array", "items": { "type": "string" }, "description": "Profiles that are compatible" },
+        "requirements_hash": { "type": "string", "description": "Hash of the normative requirements section" },
+        "classification": { "type": "string", "description": "e.g. baseline, regulated, enterprise" }
+      }
+    }
+  }
+}

@@ -62,7 +62,7 @@ Ecosystem-wide structure and the full specialist-role matrix live in the workspa
 ## Responsibilities
 
 - Maintain the canonical GFN-1 specification and the federation RFC series
-- Keep lexicon schemas aligned with the spec (realignment tracked in RFC-0009)
+- Keep lexicon schemas aligned with the spec (realigned per RFC-0009, Final)
 - Maintain the reference feed generator and PDS configuration
 - Ensure federation content lands here rather than in sibling repos
 
@@ -73,9 +73,13 @@ Ecosystem-wide structure and the full specialist-role matrix live in the workspa
   an AT Protocol Personal Data Server reference deployment
 - Specification source markdown lives under `sites/federation/src/content/docs/`. Frontmatter requires
   `title`; `description` is recommended.
-- Lexicon schemas follow AT Protocol Lexicon v1. **Existing definitions predate GFN-1 v1.0 and use a
-  different namespace (`com.aegisfederation.governance.*`, camelCase fields); realignment is tracked in
-  [RFC-0009](https://aegis-federation.com/rfc/0009/) (high priority).**
+- Lexicon schemas follow AT Protocol Lexicon v1, realigned to the GFN-1 spec per
+  [RFC-0009](https://aegis-federation.com/rfc/0009/): one record per registered `event_type`
+  (`circumventionReport`, `riskSignal`, `policyUpdate`, `attestation`, `incidentNotice`), snake_case
+  field names matching the spec exactly (a deliberate divergence from AT Protocol's usual camelCase,
+  for cross-spec consistency), retaining the `com.aegisfederation.governance.*` NSID namespace. Lexicon
+  v1 has no floating-point primitive, so spec fields documented as `number 0..1` (e.g. `confidence`)
+  are represented as an integer percentage (0-100) in the lexicon.
 - Feed generator implements the `app.bsky.feed.generator` XRPC interface
 - RFC numbering follows the broader AEGIS RFC series — federation-specific RFCs (e.g. RFC-0008) are mirrored
   here from aegis-governance

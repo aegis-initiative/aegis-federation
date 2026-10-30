@@ -22,24 +22,29 @@
     "nsid_namespace": "com.aegisfederation.governance",
     "record_types": [
       {
-        "nsid": "com.aegisfederation.governance.signal",
-        "description": "Governance intelligence: circumvention reports, risk telemetry, emerging threat patterns"
+        "nsid": "com.aegisfederation.governance.circumventionReport",
+        "event_type": "governance.circumvention_report.v1",
+        "description": "A technique observed or validated that attempts to bypass governance controls"
+      },
+      {
+        "nsid": "com.aegisfederation.governance.riskSignal",
+        "event_type": "governance.risk_signal.v1",
+        "description": "Aggregated telemetry describing emerging governance risk"
+      },
+      {
+        "nsid": "com.aegisfederation.governance.policyUpdate",
+        "event_type": "governance.policy_update.v1",
+        "description": "Governance policy document, profile, or delta published for peer node evaluation"
       },
       {
         "nsid": "com.aegisfederation.governance.attestation",
-        "description": "Governance posture statements: compliance status, audit results, governance configuration"
+        "event_type": "governance.attestation.v1",
+        "description": "Governance posture statements: compliance status, audit results, controls implemented"
       },
       {
-        "nsid": "com.aegisfederation.governance.capability",
-        "description": "Node capability declarations: supported governance functions and signal types"
-      },
-      {
-        "nsid": "com.aegisfederation.governance.incident",
-        "description": "Structured incident reports: governance breaches, near-misses, and applied mitigations"
-      },
-      {
-        "nsid": "com.aegisfederation.governance.policy",
-        "description": "Policy updates and governance rule changes published for peer node evaluation"
+        "nsid": "com.aegisfederation.governance.incidentNotice",
+        "event_type": "governance.incident_notice.v1",
+        "description": "Disclosure of a governance failure or safety incident"
       }
     ]
   },
