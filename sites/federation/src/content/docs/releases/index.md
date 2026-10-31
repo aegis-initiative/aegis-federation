@@ -11,6 +11,7 @@ Release notes start in April 2026 with the introduction of the auto-release pipe
 
 ### [October](/releases/26/10/)
 
+- [v26.10.30](/releases/26/10/#release--v261030) — Dev log fixes, lexicon validation, GFN-1 alignment, and Jetstream feed integrati
 - [v26.10.29](/releases/26/10/#release--v261029) — Fix automated publishing to correctly display release notes
 - [v26.10.28](/releases/26/10/#release--v261028) — Fix automated release workflow to properly create monthly version tags
 - [v26.10.27](/releases/26/10/#release--v261027) — Add sequential page navigation and enable full-text search for docs
