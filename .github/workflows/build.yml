@@ -1,0 +1,11 @@
+name: Build
+on:
+  push:
+    paths: ['sites/federation/**']
+  pull_request:
+    paths: ['sites/federation/**']
+jobs:
+  build:
+    uses: aegis-initiative/.github/.github/workflows/astro-build-check.yml@main
+    with:
+      site-dir: sites/federation
