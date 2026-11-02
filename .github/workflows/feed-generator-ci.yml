@@ -4,6 +4,7 @@ on:
     paths: ['feed-generator/**']
   pull_request:
     paths: ['feed-generator/**']
+  workflow_dispatch: {}
 jobs:
   typecheck:
     runs-on: ubuntu-latest
