@@ -1,0 +1,19 @@
+name: Feed Generator CI
+on:
+  push:
+    paths: ['feed-generator/**']
+  pull_request:
+    paths: ['feed-generator/**']
+jobs:
+  typecheck:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: feed-generator
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - run: npm ci
+      - run: npm run typecheck
