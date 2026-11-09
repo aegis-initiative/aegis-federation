@@ -1,0 +1,7 @@
+# Cloudflare Pages redirects
+# Format: <from>  <to>  <status>
+#
+# /join is linked from outside the site (Search Console reports it as 404).
+# Joining the federation is described by the GFN-1 node architecture.
+/join     /spec/node-architecture/   301
+/join/    /spec/node-architecture/   301
