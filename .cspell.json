@@ -2,6 +2,7 @@
   "version": "0.2",
   "language": "en",
   "words": [
+    "empt",
     "AEGIS", "aegis", "agentic", "Agentic", "AGP", "ATX", "ATM",
     "ATPROTO", "ATProto", "DataPort", "Finnoybu", "GFN",
     "ISAC", "LOKA", "NDSS", "OWASP", "POLYNIX", "RLHF",

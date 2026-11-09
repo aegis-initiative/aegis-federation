@@ -1,6 +1,6 @@
 ---
 title: "Request for Comments"
-description: "AEGIS Federation RFC series"
+description: "The AEGIS Federation RFC series: proposals that define GFN-1 transport, discovery, lexicon record schemas, and governance event handling across the federation network."
 ---
 
 # AEGIS Federation RFCs
