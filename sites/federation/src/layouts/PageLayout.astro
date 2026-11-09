@@ -15,6 +15,24 @@ const {
   description = "Decentralized governance intelligence sharing via the AT Protocol.",
 } = Astro.props;
 
+// Search-snippet description. When a page description is short, append the
+// context of the section it belongs to, in the meta/OG/Twitter tags only.
+// The page's own description is reproduced verbatim.
+const SECTION_CONTEXT: Record<string, string> = {
+  spec: "Part of GFN-1, the AEGIS Governance Federation Network specification for sharing AI governance intelligence over the AT Protocol.",
+  rfc: "Part of the AEGIS Federation RFC series for the GFN-1 governance federation network.",
+  overview: "From the AEGIS Governance Federation Network (GFN-1), decentralized governance intelligence sharing for AI systems.",
+  roadmap: "From the AEGIS Governance Federation Network (GFN-1), decentralized governance intelligence sharing for AI systems.",
+  releases: "From the release history of aegis-federation.com, the published GFN-1 specification.",
+};
+const SITE_CONTEXT = "From the AEGIS Governance Federation Network (GFN-1), decentralized governance intelligence sharing for AI systems.";
+const SHORT_DESCRIPTION = 120;
+const metaSection = Astro.url.pathname.split("/").filter(Boolean)[0] ?? "";
+const metaDescription =
+  description.length < SHORT_DESCRIPTION
+    ? `${description.replace(/[.\s]+$/, "")}. ${SECTION_CONTEXT[metaSection] ?? SITE_CONTEXT}`
+    : description;
+
 const pageUrl = new URL(Astro.url.pathname, Astro.site).toString();
 const fullTitle = `${title} | AEGIS Federation`;
 const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
@@ -59,19 +77,19 @@ if (segments[0] === 'releases' && segments.length >= 1) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{fullTitle}</title>
-    <meta name="description" content={description} />
+    <meta name="description" content={metaDescription} />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content={fullTitle} />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={metaDescription} />
     <meta property="og:url" content={pageUrl} />
     <meta property="og:site_name" content="AEGIS Federation" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={fullTitle} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:description" content={metaDescription} />
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="canonical" href={pageUrl} />
